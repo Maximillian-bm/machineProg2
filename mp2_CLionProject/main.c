@@ -3,7 +3,8 @@
 
 struct Card{
     bool hidden;
-    char cardVal[2];
+    char suit;
+    int num;
     struct Card* nextCard;
 };
 
