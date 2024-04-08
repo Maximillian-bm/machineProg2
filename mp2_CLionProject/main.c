@@ -9,11 +9,17 @@ struct Card{
     struct Card* nextCard;
 };
 
+struct CardInDeck{
+    bool hidden;
+    char suit;
+    int num;
+};
+
 char input[20];
 
 bool playPhase = false;
 
-char deck[2][52];
+struct CardInDeck deck[52];
 
 struct Card* C1;
 struct Card* C2;
