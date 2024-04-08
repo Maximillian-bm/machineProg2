@@ -17,16 +17,12 @@ Tjek projekt pdf'en for detaljer om ovenstående punkter.
 Skriver det op lidt ligesom scrum sprints.
 
 ## Product Backlog Creation
-Features der skal laves.
-* Sample feature
+Opgaver der skal laves.
+* Opgaveeksempel
 
 ## Sprint
-Features man har meldt sig på, som man er i gang med.
+Opgaver man har meldt sig på, som man er i gang med.
 * Opsætning af UI i Scenebuilder - Gustav
 
-## Product Backlog Creation
-Features der skal laves
-1. [ ] Feature
-
 ## Done
-* Sample feature that have been implemented
+* Opgaveeksempel der er færdigt
