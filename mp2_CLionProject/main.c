@@ -36,7 +36,13 @@ bool r();
 void s();
 bool l();
 
+void printBord();
+
 int main() {
-    printf("Hello, World!\n");
+    char input[50];
+    while(true){
+        printBord();
+        scanf("%s", input);
+    }
     return 0;
 }
