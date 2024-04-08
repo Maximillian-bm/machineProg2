@@ -9,6 +9,10 @@ struct Card{
     struct Card* nextCard;
 };
 
+bool playPhase = false;
+
+char deck[2][52];
+
 struct Card* C1;
 struct Card* C2;
 struct Card* C3;
@@ -43,6 +47,11 @@ int main() {
     while(true){
         printBord();
         scanf("%s", input);
+        if(playPhase){
+
+        }else{
+
+        }
     }
     return 0;
 }
