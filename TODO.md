@@ -1,5 +1,8 @@
-# Project development steps
-Når man er færdig med et punkt, markerer man den som [x].
+# TODO
+
+
+## Ting der skal laves
+_Når du melder dig på en opgave, så skriv dit navn udfor og læg den i "Igang"._
 1. 1. [ ] LD (filename)
 2. 2. [ ] SW
 3. 3. [ ] SI (split)
@@ -10,19 +13,14 @@ Når man er færdig med et punkt, markerer man den som [x].
 8. 8. [ ] Q
 9. 9. [ ] (Game Moves)
 10. 10. [ ] GUI
+_Tjek projekt pdf'en for detaljer om ovenstående punkter._
 
-Tjek projekt pdf'en for detaljer om ovenstående punkter.
-
-# "Scrum"
-Skriver det op lidt ligesom scrum sprints.
-
-## Product Backlog Creation
-Opgaver der skal laves.
+* Opgaveeksempel
 * Opgaveeksempel
 
-## Sprint
-Opgaver man har meldt sig på, som man er i gang med.
+## Igang
+_Opgaver man har meldt sig på, som man er i gang med._
 * Opsætning af UI i Scenebuilder - Gustav
 
-## Done
+## Færdig
 * Opgaveeksempel der er færdigt
