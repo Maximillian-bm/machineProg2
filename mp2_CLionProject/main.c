@@ -28,7 +28,7 @@ struct Card* F2;
 struct Card* F3;
 struct Card* F4;
 
-char* findAgument();
+char* findAgument(int);
 int findMethod();
 
 bool ld(char*);
@@ -54,19 +54,19 @@ int main() {
         int method = findMethod();
         switch (method) {
             case 1:
-                ld(findAgument());
+                ld(findAgument(1));
                 break;
             case 2:
                 sw();
                 break;
             case 3:
-                sl(findAgument());
+                sl(findAgument(3));
                 break;
             case 4:
                 sr();
                 break;
             case 5:
-                sd(findAgument());
+                sd(findAgument(5));
                 break;
             case 6:
                 exit = true;
@@ -78,7 +78,7 @@ int main() {
                 q();
                 break;
             case 9:
-                move(findAgument());
+                move(findAgument(9));
                 break;
             case 10:
                 u();
@@ -87,21 +87,26 @@ int main() {
                 r();
                 break;
             case 12:
-                s(findAgument());
+                s(findAgument(12));
                 break;
             case 13:
-                l(findAgument());
+                l(findAgument(13));
                 break;
         }
     }
     return 0;
 }
 
-char* findAgument(){
-
+char* findAgument(int aguNum){
+// in the "input" find and return the agument.
+// in the case that the agunum is 1, 5, 12 or 13, return the filename between < > in "input"
+// in the case that agunum is 3 return the number in "input"
+// in the case of 9 return the whole string of "input"
+// any returns should be a char* to a new char array
 }
 int findMethod(){
-
+// return the number assotiated with the command saved in "input"
+// if input is not valid return 0
 }
 
 bool ld(char* filename){
