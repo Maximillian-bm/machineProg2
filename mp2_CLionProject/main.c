@@ -5,6 +5,7 @@ struct Card{
     bool hidden;
     char suit;
     int num;
+    struct Card* prevCard;
     struct Card* nextCard;
 };
 
