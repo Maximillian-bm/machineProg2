@@ -1,0 +1,3 @@
+C:/Users/Gusta/Documents/Uni/Maskinkode/Maskinkode Projekt/machineProg2/mp2_CLionProject/cmake-build-debug/CMakeFiles/mp2_CLionProject.dir
+C:/Users/Gusta/Documents/Uni/Maskinkode/Maskinkode Projekt/machineProg2/mp2_CLionProject/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Gusta/Documents/Uni/Maskinkode/Maskinkode Projekt/machineProg2/mp2_CLionProject/cmake-build-debug/CMakeFiles/rebuild_cache.dir
