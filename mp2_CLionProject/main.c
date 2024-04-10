@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <malloc.h>
 
 struct Card{
     bool hidden;
@@ -237,16 +238,72 @@ void printBord(struct Board board){
 
 }
 
-char* cardAt(struct Card* card, int at){
-//Return a string representing the card (eg. KH or 2D)
-//the given pointer points to the first card in a list
-//the int 'at' is what card in the list you are to return
-//if the card exists and isnt hidden return its value like "AC or 3H"
-//if it dosnt exist return two spaces like so "  "
-//if the card exists but is hidden return "[]"
+/*
+ * Function: cardAt
+ * ----------------------------
+ * Find the card at the given position and returns its value and suit as a string (E.g. King of Hearts: "KH" or Two of Diamonds: "2D").
+ * If there is no card at the given position, the method returns: "  ".
+ * If the card at the given position is hidden, the method returns: "[]".
+ *
+ * Parameters:
+ * struct Card* card:   The pointer to the first card in a list. Must not be null.
+ * int at:              The distance from card in the linked list. Must be greater than or equal to 0.
+ *
+ * Returns:
+ * The string of the card value and suit.
+ */
+char* cardAt(struct Card* card, int at) {
+    // Error handling
+    if (card == NULL) {
+        printf("Error: Card pointer must not be null. Received: %p\n", card);
+        return "  ";
+    } else if (at < 0) {
+        printf("Error: Card position argument can not be negative. Received: %d\n", at);
+        return "  ";
+    }
+
+    // Recursive call to find card at the given position.
+    if (at == 0) { // Base case
+        if (card->hidden == true) {
+            return "[]";
+        } else {
+            char *combinedString = malloc(2 * sizeof(char) + 1); // Allocate space for two chars and a null terminator in memory;
+            snprintf(combinedString, sizeof(combinedString), "%c%c", card->num, card->suit); // Combine the value with the suit.
+            return combinedString;
+        }
+    } else { // (at > 0)
+        if (card->nextCard == NULL) {
+            return "  ";
+        } else { // Recursive call
+            return cardAt(card->nextCard, at - 1);
+        }
+    }
 }
 
+/*
+ * Function: cardAtTop
+ * ----------------------------
+ * Finds the card at the top of the card list from the given card and returns its value and suit as a string. (E.g. King of Hearts: "KH" or Two of Diamonds: "2D").
+ * If there are no cards in the list, the method returns: "  ".
+ *
+ * Parameters:
+ * struct Card* card:   The pointer to the first card in a list. Must not be null.
+ *
+ * Returns:
+ * The string of the card value and suit of the top card.
+ */
 char* cardAtTop(struct Card* card){
-//The given pointer points to a list of cards, if there is no cards in that list return "[]"
-// else return the value of the top card
+    // Error handling
+    if (card == NULL) {
+        printf("Error: Card pointer must not be null. Received: %p\n", card);
+        return "  ";
+    }
+
+    if (card->nextCard == NULL) { // Base case
+        char *combinedString = malloc(2 * sizeof(char) + 1); // Allocate space for two chars and a null terminator in memory;
+        snprintf(combinedString, sizeof(combinedString), "%c%c", card->num, card->suit); // Combine the value with the suit.
+        return combinedString;
+    } else { // Recursive call
+        return cardAtTop(card->nextCard);
+    }
 }
