@@ -98,7 +98,6 @@ int main() {
                 break;
             case 7:
                 p(&board);
-                board.playPhase = true;
                 break;
             case 8:
                 q(&board);
@@ -125,10 +124,41 @@ int main() {
 
 char* findAgument(struct Board *board, int aguNum){
 // in the "input" find and return the agument.
-// in the case that the agunum is 1, 5, 12 or 13, return the filename between < > in "input"
+// in the case that the agunum is 1, 5, 12 or 13, return the filename in "input"
 // in the case that agunum is 3 return the number in "input"
 // in the case of 9 return the whole string of "input"
 // any returns should be a char* to a new char array
+    char r[20];
+    int i = 0;
+    while(true){
+        if(board->input[i] == '\0'){
+            break;
+        }
+        i++;
+    }
+
+    if(aguNum == 1 || aguNum == 3 || aguNum == 5){
+        int j = 0;
+        i--;
+        while(j<i){
+            r[j] = board->input[j+2];
+            j++;
+        }
+    }else if(aguNum == 12 || aguNum == 13){
+        int j = 0;
+        while(j<i){
+            r[j] = board->input[j+2];
+            j++;
+        }
+    }else if(aguNum == 9){
+        int j = 0;
+        i++;
+        while(j<i){
+            r[j] = board->input[j];
+            j++;
+        }
+    }
+    return &r;
 }
 int findMethod(struct Board *board){
 // return the number assotiated with the command saved in "input"
