@@ -49,6 +49,10 @@ void l(struct Board, char*);
 
 void printBord(struct Board);
 
+char* cardAt(struct Card*,int);
+
+char* cardAtTop(struct Card*);
+
 int main() {
 
     struct Board board;
@@ -167,6 +171,38 @@ void printBord(struct Board board){
     printf("\n");
     if(board.playPhase){
         printf("C1   C2   C3   C4   C5   C6   C7\n\n");
+        int i = 0;
+        bool done = false;
+        while(!done){
+            done = true;
+            int j = 0;
+            while(j<7){
+                char* card = cardAt(board.c[j], i);
+                printf("%s    ", card);
+                if(*card != ' '){
+                    done = false;
+                }
+                j++;
+            }
+            printf("      ");
+
+            if(i == 0){
+                printf("%s F1", cardAtTop(board.f[0]));
+            }else if(i == 2){
+                printf("%s F2", cardAtTop(board.f[1]));
+            }else if(i == 4){
+                printf("%s F3", cardAtTop(board.f[2]));
+            }else if(i == 6){
+                printf("%s F4", cardAtTop(board.f[3]));
+            }
+
+            printf("\n");
+
+            i++;
+        }
+        printf("LAST Command:%s\n", board.input);
+        printf("Message:%s\n", board.output);
+        printf("INPUT>");
     }else{
         printf("C1    C2    C3    C4    C5    C6    C7\n\n");
         int i = 0;
@@ -180,23 +216,37 @@ void printBord(struct Board board){
                 }
                 j++;
             }
-        printf("      ");
+            printf("      ");
 
-        if(i == 0){
-            printf("[] F1");
-        }else if(i == 2){
-            printf("[] F2");
-        }else if(i == 4){
-            printf("[] F3");
-        }else if(i == 6){
-            printf("[] F4");
-        }
-        printf("\n");
-        i++;
+            if(i == 0){
+                printf("[] F1");
+            }else if(i == 2){
+                printf("[] F2");
+            }else if(i == 4){
+                printf("[] F3");
+            }else if(i == 6){
+                printf("[] F4");
+            }
+            printf("\n");
+            i++;
         }
         printf("LAST Command:%s\n", board.input);
         printf("Message:%s\n", board.output);
         printf("INPUT>");
     }
 
+}
+
+char* cardAt(struct Card* card, int at){
+//Return a string representing the card (eg. KH or 2D)
+//the given pointer points to the first card in a list
+//the int 'at' is what card in the list you are to return
+//if the card exists and isnt hidden return its value like "AC or 3H"
+//if it dosnt exist return two spaces like so "  "
+//if the card exists but is hidden return "[]"
+}
+
+char* cardAtTop(struct Card* card){
+//The given pointer points to a list of cards, if there is no cards in that list return "[]"
+// else return the value of the top card
 }
