@@ -37,6 +37,7 @@ struct Board{
 void findAgument(struct Board*, int);
 int findMethod(struct Board*);
 
+void setDeckToDefoult(struct Board*);
 void ld(struct Board*);
 void sw(struct Board*);
 void si(struct Board*);
@@ -280,11 +281,64 @@ int findMethod(struct Board *board){
     return 0;
 }
 
+void setDeckToDefoult(struct Board* board){
+    int i = 0;
+    while(i<52){
+        board->deck[i].created = true;
+        board->deck[i].hidden = true;
+        if(i<13){
+            board->deck[i].suit = 'C';
+        }else if(i<26){
+            board->deck[i].suit = 'D';
+        }else if(i<39){
+            board->deck[i].suit = 'H';
+        }else{
+            board->deck[i].suit = 'S';
+        }
+        if(i%13 == 0){
+            board->deck[i].num = 'A';
+        }else if(i%13 == 1){
+            board->deck[i].num = '2';
+        }else if(i%13 == 2){
+            board->deck[i].num = '3';
+        }else if(i%13 == 3){
+            board->deck[i].num = '4';
+        }else if(i%13 == 4){
+            board->deck[i].num = '5';
+        }else if(i%13 == 5){
+            board->deck[i].num = '6';
+        }else if(i%13 == 6){
+            board->deck[i].num = '7';
+        }else if(i%13 == 7){
+            board->deck[i].num = '8';
+        }else if(i%13 == 8){
+            board->deck[i].num = '9';
+        }else if(i%13 == 9){
+            board->deck[i].num = 'T';
+        }else if(i%13 == 10){
+            board->deck[i].num = 'J';
+        }else if(i%13 == 11){
+            board->deck[i].num = 'D';
+        }else if(i%13 == 12){
+            board->deck[i].num = 'K';
+        }
+        i++;
+    }
+}
+
 void ld(struct Board *board){
     printf("\nld() have been called with the argument:%s", board->aguement);
+    //setDeckToDefoult(board);
 }
 void sw(struct Board *board){
     printf("\nsw() have been called");
+    int i = 0;
+    while(i<52) {
+        if(board->deck[i].created) {
+            board->deck[i].hidden = false;
+        }
+        i++;
+    }
 }
 void si(struct Board *board){
     printf("\nsi() have been called with the argument:%s", board->aguement);
@@ -358,8 +412,10 @@ void printBord(struct Board board){
         while(i<8){
             int j = 0;
             while(j<7){
-                if(j+(7*i)<52 && board.deck[j+(7*i)].created){
+                if(j+(7*i)<52 && board.deck[j+(7*i)].created && !board.deck[j+(7*i)].hidden){
                     printf("%c%c    ", board.deck[j+(7*i)].num,board.deck[j+(7*i)].suit);
+                }else if(j+(7*i)<52 && board.deck[j+(7*i)].created && board.deck[j+(7*i)].hidden){
+                    printf("[]    ");
                 }else{
                     printf("      ");
                 }

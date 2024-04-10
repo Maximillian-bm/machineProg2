@@ -1,11 +1,11 @@
 # Project development steps
 Når man er færdig med et punkt, markerer man den som [x].
 1. 1. [ ] LD (filename)
-2. 2. [ ] SW
+2. 2. [x] SW
 3. 3. [ ] SI (split)
 4. 4. [ ] SR
 5. 5. [ ] SD (filename)
-6. 6. [ ] QQ
+6. 6. [x] QQ
 7. 7. [ ] P
 8. 8. [ ] Q
 9. 9. [ ] U
@@ -14,8 +14,8 @@ Når man er færdig med et punkt, markerer man den som [x].
 12. 12. [ ] L
 13. 13. [ ] (Game Moves)
 14. 14. [x] Print bord
-15. 15. [ ] Find agument
-16. 16. [ ] Find command number
+15. 15. [x] Find agument
+16. 16. [x] Find command number
 17. 17. [ ] GUI
 
 Tjek projekt pdf'en for detaljer om ovenstående punkter.
