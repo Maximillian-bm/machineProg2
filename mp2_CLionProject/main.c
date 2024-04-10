@@ -19,6 +19,8 @@ struct CardInDeck{
 
 struct Board{
 
+    char aguement[20];
+
     char input[20];
 
     char output[20];
@@ -32,21 +34,21 @@ struct Board{
     struct Card* f[4];
 };
 
-char* findAgument(struct Board*, int);
+void findAgument(struct Board*, int);
 int findMethod(struct Board*);
 
-void ld(struct Board*, char*);
+void ld(struct Board*);
 void sw(struct Board*);
-void si(struct Board*, char*);
+void si(struct Board*);
 void sr(struct Board*);
-void sd(struct Board*, char*);
+void sd(struct Board*);
 void p(struct Board*);
 void q(struct Board*);
-void move(struct Board*, char*);
+void move(struct Board*);
 void u(struct Board*);
 void r(struct Board*);
-void s(struct Board*, char*);
-void l(struct Board*, char*);
+void s(struct Board*);
+void l(struct Board*);
 
 void printBord(struct Board);
 
@@ -66,6 +68,10 @@ int main() {
         i++;
     }
 
+    board.input[0] = '\0';
+
+    board.output[0] = '\0';
+
     board.playPhase = false;
 
     bool exit = false;
@@ -79,19 +85,22 @@ int main() {
 
         switch (method) {
             case 1:
-                ld(&board, findAgument(&board,1));
+                findAgument(&board,1);
+                ld(&board);
                 break;
             case 2:
                 sw(&board);
                 break;
             case 3:
-                si(&board, findAgument(&board,3));
+                findAgument(&board,3);
+                si(&board);
                 break;
             case 4:
                 sr(&board);
                 break;
             case 5:
-                sd(&board, findAgument(&board,5));
+                findAgument(&board,5);
+                sd(&board);
                 break;
             case 6:
                 exit = true;
@@ -103,7 +112,8 @@ int main() {
                 q(&board);
                 break;
             case 9:
-                move(&board,findAgument(&board,9));
+                findAgument(&board,9);
+                move(&board);
                 break;
             case 10:
                 u(&board);
@@ -112,23 +122,24 @@ int main() {
                 r(&board);
                 break;
             case 12:
-                s(&board,findAgument(&board,12));
+                findAgument(&board,12);
+                s(&board);
                 break;
             case 13:
-                l(&board,findAgument(&board,13));
+                findAgument(&board,13);
+                l(&board);
                 break;
         }
     }
     return 0;
 }
 
-char* findAgument(struct Board *board, int aguNum){
+void findAgument(struct Board *board, int aguNum){
 // in the "input" find and return the agument.
 // in the case that the agunum is 1, 5, 12 or 13, return the filename in "input"
 // in the case that agunum is 3 return the number in "input"
 // in the case of 9 return the whole string of "input"
 // any returns should be a char* to a new char array
-    char r[20];
     int i = 0;
     while(true){
         if(board->input[i] == '\0'){
@@ -141,24 +152,23 @@ char* findAgument(struct Board *board, int aguNum){
         int j = 0;
         i--;
         while(j<i){
-            r[j] = board->input[j+2];
+            board->aguement[j] = board->input[j+2];
             j++;
         }
     }else if(aguNum == 12 || aguNum == 13){
         int j = 0;
         while(j<i){
-            r[j] = board->input[j+2];
+            board->aguement[j] = board->input[j+2];
             j++;
         }
     }else if(aguNum == 9){
         int j = 0;
         i++;
         while(j<i){
-            r[j] = board->input[j];
+            board->aguement[j] = board->input[j];
             j++;
         }
     }
-    return &r;
 }
 int findMethod(struct Board *board){
 // return the number assotiated with the command saved in "input"
@@ -270,41 +280,41 @@ int findMethod(struct Board *board){
     return 0;
 }
 
-void ld(struct Board *board, char* filename){
-
+void ld(struct Board *board){
+    printf("\nld() have been called with the argument:%s", board->aguement);
 }
 void sw(struct Board *board){
-
+    printf("\nsw() have been called");
 }
-void si(struct Board *board, char* num){
-
+void si(struct Board *board){
+    printf("\nsi() have been called with the argument:%s", board->aguement);
 }
 void sr(struct Board *board){
-
+    printf("\nsr() have been called");
 }
-void sd(struct Board *board, char* filename){
-
+void sd(struct Board *board){
+    printf("\nsd() have been called with the argument:%s", board->aguement);
 }
 void p(struct Board *board){
-
+    printf("\np() have been called");
 }
 void q(struct Board *board){
-
+    printf("\nq() have been called");
 }
-void move(struct Board *board, char* move){
-
+void move(struct Board *board){
+    printf("\nmove() have been called with the argument:%s", board->aguement);
 }
 void u(struct Board *board){
-
+    printf("\nu() have been called");
 }
 void r(struct Board *board){
-
+    printf("\nr() have been called");
 }
-void s(struct Board *board, char* filename){
-
+void s(struct Board *board){
+    printf("\ns() have been called with the argument:%s", board->aguement);
 }
-void l(struct Board *board, char* filename){
-
+void l(struct Board *board){
+    printf("\nl() have been called with the argument:%s", board->aguement);
 }
 void printBord(struct Board board){
     printf("\n");
