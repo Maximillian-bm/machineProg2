@@ -19,6 +19,8 @@ struct Board{
 
     char input[20];
 
+    char output[20];
+
     bool playPhase;
 
     struct CardInDeck deck[52];
