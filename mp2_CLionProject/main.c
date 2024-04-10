@@ -33,18 +33,18 @@ struct Board{
 char* findAgument(struct Board, int);
 int findMethod(struct Board);
 
-bool ld(struct Board, char*);
-bool sw(struct Board);
-bool sl(struct Board, char*);
+void ld(struct Board, char*);
+void sw(struct Board);
+void sl(struct Board, char*);
 void sr(struct Board);
 void sd(struct Board, char*);
 void p(struct Board);
 void q(struct Board);
-bool move(struct Board, char*);
+void move(struct Board, char*);
 void u(struct Board);
-bool r(struct Board);
+void r(struct Board);
 void s(struct Board, char*);
-bool l(struct Board, char*);
+void l(struct Board, char*);
 
 void printBord(struct Board);
 
@@ -121,13 +121,13 @@ int findMethod(struct Board board){
 // if input is not valid return 0
 }
 
-bool ld(struct Board board, char* filename){
+void ld(struct Board board, char* filename){
 
 }
-bool sw(struct Board board){
+void sw(struct Board board){
 
 }
-bool sl(struct Board board, char* num){
+void sl(struct Board board, char* num){
 
 }
 void sr(struct Board board){
@@ -142,19 +142,19 @@ void p(struct Board board){
 void q(struct Board board){
 
 }
-bool move(struct Board board, char* move){
+void move(struct Board board, char* move){
 
 }
 void u(struct Board board){
 
 }
-bool r(struct Board board){
+void r(struct Board board){
 
 }
 void s(struct Board board, char* filename){
 
 }
-bool l(struct Board board, char* filename){
+void l(struct Board board, char* filename){
 
 }
 void printBord(struct Board board){
