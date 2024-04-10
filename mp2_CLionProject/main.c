@@ -11,8 +11,9 @@ struct Card{
 
 struct CardInDeck{
     bool hidden;
+    bool created;
     char suit;
-    int num;
+    char num;
 };
 
 struct Board{
@@ -51,6 +52,11 @@ void printBord(struct Board);
 int main() {
 
     struct Board board;
+    int i = 0;
+    while(i<52){
+        board.deck[i].created = false;
+        i++;
+    }
 
     board.playPhase = false;
 
@@ -158,5 +164,39 @@ void l(struct Board board, char* filename){
 
 }
 void printBord(struct Board board){
+    printf("\n");
+    if(board.playPhase){
+        printf("C1 C2 C3 C4 C5 C6 C7\n\n");
+    }else{
+        printf("C1 C2 C3 C4 C5 C6 C7\n\n");
+        int i = 0;
+        while(i<8){
+            int j = 0;
+            while(j<7){
+                if(j+(7*i)<52 && board.deck[j+(7*i)].created){
+                    printf("%c%c ", board.deck[j+(7*i)].num,board.deck[j+(7*i)].suit);
+                }else{
+                    printf("   ");
+                }
+                j++;
+            }
+        printf("      ");
+
+        if(i == 0){
+            printf("[] F1");
+        }else if(i == 2){
+            printf("[] F2");
+        }else if(i == 4){
+            printf("[] F3");
+        }else if(i == 6){
+            printf("[] F4");
+        }
+        printf("\n");
+        i++;
+        }
+        printf("LAST Command:%s\n", board.input);
+        printf("Message:%s\n", board.output);
+        printf("INPUT>");
+    }
 
 }
