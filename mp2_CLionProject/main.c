@@ -51,8 +51,8 @@ void l(struct Board, char*);
 void printBord(struct Board);
 
 char* cardAt(struct Card*,int);
-
 char* cardAtTop(struct Card*);
+char cardNumToChar(int value);
 
 int main() {
 
@@ -268,7 +268,7 @@ char* cardAt(struct Card* card, int at) {
             return "[]";
         } else {
             char *combinedString = malloc(2 * sizeof(char) + 1); // Allocate space for two chars and a null terminator in memory;
-            snprintf(combinedString, sizeof(combinedString), "%c%c", card->num, card->suit); // Combine the value with the suit.
+            snprintf(combinedString, sizeof(combinedString), "%c%c", cardNumToChar(card->num), card->suit); // Combine the value with the suit.
             return combinedString;
         }
     } else { // (at > 0)
@@ -301,9 +301,41 @@ char* cardAtTop(struct Card* card){
 
     if (card->nextCard == NULL) { // Base case
         char *combinedString = malloc(2 * sizeof(char) + 1); // Allocate space for two chars and a null terminator in memory;
-        snprintf(combinedString, sizeof(combinedString), "%c%c", card->num, card->suit); // Combine the value with the suit.
+        snprintf(combinedString, sizeof(combinedString), "%c%c", cardNumToChar(card->num), card->suit); // Combine the value with the suit.
         return combinedString;
     } else { // Recursive call
         return cardAtTop(card->nextCard);
+    }
+}
+
+/*
+ * Function: cardAtTop
+ * ----------------------------
+ * Converts a card value to char, where 1=A, 10=T, 11=J, 12=Q and 13=K.
+ *
+ * Parameters:
+ * int value:   The value of the card. Must be between 1 (included) and 13 (included).
+ *
+ * Returns:
+ * The value as a string.
+ */
+char cardNumToChar(int value) {
+    if (value < 1 || value > 13) {
+        printf("Error: Value must be between 1 and 13. Received: %d\n", value);
+        return '0';
+    }
+    switch (value) {
+        case 1:
+            return 'A';
+        case 10:
+            return 'T';
+        case 11:
+            return 'J';
+        case 12:
+            return 'Q';
+        case 13:
+            return 'K';
+        default:
+            return (char)value;
     }
 }
