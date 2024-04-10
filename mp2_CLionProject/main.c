@@ -32,21 +32,21 @@ struct Board{
     struct Card* f[4];
 };
 
-char* findAgument(struct Board, int);
-int findMethod(struct Board);
+char* findAgument(struct Board*, int);
+int findMethod(struct Board*);
 
-void ld(struct Board, char*);
-void sw(struct Board);
-void si(struct Board, char*);
-void sr(struct Board);
-void sd(struct Board, char*);
-void p(struct Board);
-void q(struct Board);
-void move(struct Board, char*);
-void u(struct Board);
-void r(struct Board);
-void s(struct Board, char*);
-void l(struct Board, char*);
+void ld(struct Board*, char*);
+void sw(struct Board*);
+void si(struct Board*, char*);
+void sr(struct Board*);
+void sd(struct Board*, char*);
+void p(struct Board*);
+void q(struct Board*);
+void move(struct Board*, char*);
+void u(struct Board*);
+void r(struct Board*);
+void s(struct Board*, char*);
+void l(struct Board*, char*);
 
 void printBord(struct Board);
 
@@ -54,8 +54,8 @@ char* cardAt(struct Card*,int);
 char* cardAtTop(struct Card*);
 char cardNumToChar(int value);
 
-void ok(struct Board);
-void notOK(struct Board);
+void ok(struct Board*);
+void notOK(struct Board*);
 
 int main() {
 
@@ -71,72 +71,72 @@ int main() {
     bool exit = false;
 
     while(!exit) {
-
         printBord(board);
 
         scanf("%20s", board.input);
 
-        int method = findMethod(board);
+        int method = findMethod(&board);
 
         switch (method) {
             case 1:
-                ld(board, findAgument(board,1));
+                ld(&board, findAgument(&board,1));
                 break;
             case 2:
-                sw(board);
+                sw(&board);
                 break;
             case 3:
-                si(board, findAgument(board,3));
+                si(&board, findAgument(&board,3));
                 break;
             case 4:
-                sr(board);
+                sr(&board);
                 break;
             case 5:
-                sd(board, findAgument(board,5));
+                sd(&board, findAgument(&board,5));
                 break;
             case 6:
                 exit = true;
                 break;
             case 7:
-                p(board);
+                p(&board);
+                board.playPhase = true;
                 break;
             case 8:
-                q(board);
+                q(&board);
                 break;
             case 9:
-                move(board,findAgument(board,9));
+                move(&board,findAgument(&board,9));
                 break;
             case 10:
-                u(board);
+                u(&board);
                 break;
             case 11:
-                r(board);
+                r(&board);
                 break;
             case 12:
-                s(board,findAgument(board,12));
+                s(&board,findAgument(&board,12));
                 break;
             case 13:
-                l(board,findAgument(board,13));
+                l(&board,findAgument(&board,13));
                 break;
         }
     }
     return 0;
 }
 
-char* findAgument(struct Board board, int aguNum){
+char* findAgument(struct Board *board, int aguNum){
 // in the "input" find and return the agument.
 // in the case that the agunum is 1, 5, 12 or 13, return the filename between < > in "input"
 // in the case that agunum is 3 return the number in "input"
 // in the case of 9 return the whole string of "input"
 // any returns should be a char* to a new char array
 }
-int findMethod(struct Board board){
+int findMethod(struct Board *board){
 // return the number assotiated with the command saved in "input"
 // if input is not valid return 0
-    if(board.playPhase){
-        switch(board.input[0]){
+    if(board->playPhase){
+        switch(board->input[0]){
             case 'Q':
-                if(board.input[1] == '\0'){
+                if(board->input[1] == '\0'){
                     ok(board);
                     return 8;
                 }else{
@@ -144,11 +144,13 @@ int findMethod(struct Board board){
                     return 0;
                 }
             case 'C':
+                ok(board);
                 return 9;
             case 'F':
+                ok(board);
                 return 9;
             case 'U':
-                if(board.input[1] == '\0'){
+                if(board->input[1] == '\0'){
                     ok(board);
                     return 10;
                 }else{
@@ -156,7 +158,7 @@ int findMethod(struct Board board){
                     return 0;
                 }
             case 'R':
-                if(board.input[1] == '\0'){
+                if(board->input[1] == '\0'){
                     ok(board);
                     return 11;
                 }else{
@@ -164,7 +166,7 @@ int findMethod(struct Board board){
                     return 0;
                 }
             case 'S':
-                if(board.input[1] != '\0'){
+                if(board->input[1] != '\0'){
                     ok(board);
                     return 12;
                 }else{
@@ -172,7 +174,7 @@ int findMethod(struct Board board){
                     return 0;
                 }
             case 'L':
-                if(board.input[1] != '\0'){
+                if(board->input[1] != '\0'){
                     ok(board);
                     return 13;
                 }else{
@@ -181,19 +183,19 @@ int findMethod(struct Board board){
                 }
         }
     }else{
-        switch (board.input[1]) {
+        switch (board->input[1]) {
             case 'D':
-                if(board.input[0] == 'L'){
+                if(board->input[0] == 'L'){
                     ok(board);
                     return 1;
-                }else if(board.input[0] == 'S'){
+                }else if(board->input[0] == 'S'){
                     ok(board);
                     return 5;
                 }else{
                     notOK(board);
                 }
             case 'W':
-                if(board.input[0] == 'S' && board.input[2] == '\0'){
+                if(board->input[0] == 'S' && board->input[2] == '\0'){
                     ok(board);
                     return 2;
                 }else{
@@ -201,7 +203,7 @@ int findMethod(struct Board board){
                     return 0;
                 }
             case 'I':
-                if(board.input[0] == 'S'){
+                if(board->input[0] == 'S'){
                     ok(board);
                     return 3;
                 }else{
@@ -209,7 +211,7 @@ int findMethod(struct Board board){
                     return 0;
                 }
             case 'R':
-                if(board.input[0] == 'S' && board.input[2] == '\0'){
+                if(board->input[0] == 'S' && board->input[2] == '\0'){
                     ok(board);
                     return 4;
                 }else{
@@ -217,7 +219,7 @@ int findMethod(struct Board board){
                     return 0;
                 }
             case 'Q':
-                if(board.input[0] == 'Q' && board.input[2] == '\0'){
+                if(board->input[0] == 'Q' && board->input[2] == '\0'){
                     ok(board);
                     return 6;
                 }else{
@@ -225,7 +227,7 @@ int findMethod(struct Board board){
                     return 0;
                 }
             case '\0':
-                if(board.input[0] == 'P'){
+                if(board->input[0] == 'P'){
                     ok(board);
                     return 7;
                 }else{
@@ -238,40 +240,40 @@ int findMethod(struct Board board){
     return 0;
 }
 
-void ld(struct Board board, char* filename){
+void ld(struct Board *board, char* filename){
 
 }
-void sw(struct Board board){
+void sw(struct Board *board){
 
 }
-void si(struct Board board, char* num){
+void si(struct Board *board, char* num){
 
 }
-void sr(struct Board board){
+void sr(struct Board *board){
 
 }
-void sd(struct Board board, char* filename){
+void sd(struct Board *board, char* filename){
 
 }
-void p(struct Board board){
+void p(struct Board *board){
 
 }
-void q(struct Board board){
+void q(struct Board *board){
 
 }
-void move(struct Board board, char* move){
+void move(struct Board *board, char* move){
 
 }
-void u(struct Board board){
+void u(struct Board *board){
 
 }
-void r(struct Board board){
+void r(struct Board *board){
 
 }
-void s(struct Board board, char* filename){
+void s(struct Board *board, char* filename){
 
 }
-void l(struct Board board, char* filename){
+void l(struct Board *board, char* filename){
 
 }
 void printBord(struct Board board){
@@ -446,21 +448,21 @@ char cardNumToChar(int value) {
     }
 }
 
-void ok(struct Board board){
-    board.output[0] = 'O';
-    board.output[1] = 'K';
-    board.output[2] = '\0';
+void ok(struct Board *board){
+    board->output[0] = 'O';
+    board->output[1] = 'K';
+    board->output[2] = '\0';
 }
 
-void notOK(struct Board board){
-    board.output[0] = 'N';
-    board.output[1] = 'O';
-    board.output[2] = 'T';
-    board.output[3] = ' ';
-    board.output[4] = 'V';
-    board.output[5] = 'A';
-    board.output[6] = 'L';
-    board.output[7] = 'I';
-    board.output[8] = 'D';
-    board.output[9] = '\0';
+void notOK(struct Board *board){
+    board->output[0] = 'N';
+    board->output[1] = 'O';
+    board->output[2] = 'T';
+    board->output[3] = ' ';
+    board->output[4] = 'V';
+    board->output[5] = 'A';
+    board->output[6] = 'L';
+    board->output[7] = 'I';
+    board->output[8] = 'D';
+    board->output[9] = '\0';
 }
