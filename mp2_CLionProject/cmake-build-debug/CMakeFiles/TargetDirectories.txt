@@ -1,3 +1,3 @@
-/Users/phillip/CLionProjects/machineProg2/mp2_CLionProject/cmake-build-debug/CMakeFiles/mp2_CLionProject.dir
-/Users/phillip/CLionProjects/machineProg2/mp2_CLionProject/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/phillip/CLionProjects/machineProg2/mp2_CLionProject/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/aggebook/Documents/Uni/Machine code/machineProg2/mp2_CLionProject/cmake-build-debug/CMakeFiles/mp2_CLionProject.dir
+/Users/aggebook/Documents/Uni/Machine code/machineProg2/mp2_CLionProject/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/aggebook/Documents/Uni/Machine code/machineProg2/mp2_CLionProject/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/phillip/CLionProjects/machineProg2/mp2_CLionProject
+# Install script for directory: /Users/aggebook/Documents/Uni/Machine code/machineProg2/mp2_CLionProject
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/phillip/CLionProjects/machineProg2/mp2_CLionProject/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/aggebook/Documents/Uni/Machine code/machineProg2/mp2_CLionProject/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
