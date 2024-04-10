@@ -37,7 +37,7 @@ int findMethod(struct Board);
 
 void ld(struct Board, char*);
 void sw(struct Board);
-void sl(struct Board, char*);
+void si(struct Board, char*);
 void sr(struct Board);
 void sd(struct Board, char*);
 void p(struct Board);
@@ -53,6 +53,9 @@ void printBord(struct Board);
 char* cardAt(struct Card*,int);
 char* cardAtTop(struct Card*);
 char cardNumToChar(int value);
+
+void ok(struct Board);
+void notOK(struct Board);
 
 int main() {
 
@@ -83,7 +86,7 @@ int main() {
                 sw(board);
                 break;
             case 3:
-                sl(board, findAgument(board,3));
+                si(board, findAgument(board,3));
                 break;
             case 4:
                 sr(board);
@@ -130,6 +133,109 @@ char* findAgument(struct Board board, int aguNum){
 int findMethod(struct Board board){
 // return the number assotiated with the command saved in "input"
 // if input is not valid return 0
+    if(board.playPhase){
+        switch(board.input[0]){
+            case 'Q':
+                if(board.input[1] == '\0'){
+                    ok(board);
+                    return 8;
+                }else{
+                    notOK(board);
+                    return 0;
+                }
+            case 'C':
+                return 9;
+            case 'F':
+                return 9;
+            case 'U':
+                if(board.input[1] == '\0'){
+                    ok(board);
+                    return 10;
+                }else{
+                    notOK(board);
+                    return 0;
+                }
+            case 'R':
+                if(board.input[1] == '\0'){
+                    ok(board);
+                    return 11;
+                }else{
+                    notOK(board);
+                    return 0;
+                }
+            case 'S':
+                if(board.input[1] != '\0'){
+                    ok(board);
+                    return 12;
+                }else{
+                    notOK(board);
+                    return 0;
+                }
+            case 'L':
+                if(board.input[1] != '\0'){
+                    ok(board);
+                    return 13;
+                }else{
+                    notOK(board);
+                    return 0;
+                }
+        }
+    }else{
+        switch (board.input[1]) {
+            case 'D':
+                if(board.input[0] == 'L'){
+                    ok(board);
+                    return 1;
+                }else if(board.input[0] == 'S'){
+                    ok(board);
+                    return 5;
+                }else{
+                    notOK(board);
+                }
+            case 'W':
+                if(board.input[0] == 'S' && board.input[2] == '\0'){
+                    ok(board);
+                    return 2;
+                }else{
+                    notOK(board);
+                    return 0;
+                }
+            case 'I':
+                if(board.input[0] == 'S'){
+                    ok(board);
+                    return 3;
+                }else{
+                    notOK(board);
+                    return 0;
+                }
+            case 'R':
+                if(board.input[0] == 'S' && board.input[2] == '\0'){
+                    ok(board);
+                    return 4;
+                }else{
+                    notOK(board);
+                    return 0;
+                }
+            case 'Q':
+                if(board.input[0] == 'Q' && board.input[2] == '\0'){
+                    ok(board);
+                    return 6;
+                }else{
+                    notOK(board);
+                    return 0;
+                }
+            case '\0':
+                if(board.input[0] == 'P'){
+                    ok(board);
+                    return 7;
+                }else{
+                    notOK(board);
+                    return 0;
+                }
+        }
+    }
+    notOK(board);
+    return 0;
 }
 
 void ld(struct Board board, char* filename){
@@ -138,7 +244,7 @@ void ld(struct Board board, char* filename){
 void sw(struct Board board){
 
 }
-void sl(struct Board board, char* num){
+void si(struct Board board, char* num){
 
 }
 void sr(struct Board board){
@@ -338,4 +444,23 @@ char cardNumToChar(int value) {
         default:
             return (char)value;
     }
+}
+
+void ok(struct Board board){
+    board.output[0] = 'O';
+    board.output[1] = 'K';
+    board.output[2] = '\0';
+}
+
+void notOK(struct Board board){
+    board.output[0] = 'N';
+    board.output[1] = 'O';
+    board.output[2] = 'T';
+    board.output[3] = ' ';
+    board.output[4] = 'V';
+    board.output[5] = 'A';
+    board.output[6] = 'L';
+    board.output[7] = 'I';
+    board.output[8] = 'D';
+    board.output[9] = '\0';
 }
