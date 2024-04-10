@@ -166,9 +166,9 @@ void l(struct Board board, char* filename){
 void printBord(struct Board board){
     printf("\n");
     if(board.playPhase){
-        printf("C1 C2 C3 C4 C5 C6 C7\n\n");
+        printf("C1   C2   C3   C4   C5   C6   C7\n\n");
     }else{
-        printf("C1 C2 C3 C4 C5 C6 C7\n\n");
+        printf("C1   C2   C3   C4   C5   C6   C7\n\n");
         int i = 0;
         while(i<8){
             int j = 0;
@@ -176,7 +176,7 @@ void printBord(struct Board board){
                 if(j+(7*i)<52 && board.deck[j+(7*i)].created){
                     printf("%c%c ", board.deck[j+(7*i)].num,board.deck[j+(7*i)].suit);
                 }else{
-                    printf("   ");
+                    printf("      ");
                 }
                 j++;
             }
