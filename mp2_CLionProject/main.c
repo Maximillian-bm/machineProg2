@@ -28,7 +28,7 @@ struct Board{
 
     struct Card* c[7];
 
-    struct Card* f[4]
+    struct Card* f[4];
 };
 
 char* findAgument(struct Board, int);

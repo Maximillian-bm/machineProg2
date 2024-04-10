@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/mp2_CLionProject.dir/main.c.o"
-  "CMakeFiles/mp2_CLionProject.dir/main.c.o.d"
-  "mp2_CLionProject"
+  "CMakeFiles/mp2_CLionProject.dir/main.c.obj"
+  "CMakeFiles/mp2_CLionProject.dir/main.c.obj.d"
+  "libmp2_CLionProject.dll.a"
+  "mp2_CLionProject.exe"
+  "mp2_CLionProject.exe.manifest"
   "mp2_CLionProject.pdb"
 )
 
