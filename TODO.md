@@ -6,7 +6,7 @@ Når man er færdig med et punkt, markerer man den som [x].
 4. 4. [ ] SR
 5. 5. [ ] SD (filename)
 6. 6. [x] QQ
-7. 7. [ ] P
+7. 7. [x] P
 8. 8. [ ] Q
 9. 9. [ ] U
 10. 10. [ ] R

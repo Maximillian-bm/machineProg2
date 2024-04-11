@@ -19,6 +19,8 @@ struct CardInDeck{
 
 struct Board{
 
+    struct Card cards[52];
+
     char aguement[20];
 
     char input[20];
@@ -51,11 +53,12 @@ void r(struct Board*);
 void s(struct Board*);
 void l(struct Board*);
 
-void printBord(struct Board);
+void printBord(struct Board*);
 
 char* cardAt(struct Card*,int);
 char* cardAtTop(struct Card*);
-char cardNumToChar(int value);
+char cardNumToChar(int);
+int cardCharToNum(char);
 
 void ok(struct Board*);
 void notOK(struct Board*);
@@ -78,7 +81,7 @@ int main() {
     bool exit = false;
 
     while(!exit) {
-        printBord(board);
+        printBord(&board);
 
         scanf("%20s", board.input);
 
@@ -328,7 +331,7 @@ void setDeckToDefoult(struct Board* board){
 
 void ld(struct Board *board){
     printf("\nld() have been called with the argument:%s", board->aguement);
-    //setDeckToDefoult(board);
+    setDeckToDefoult(board);
 }
 void sw(struct Board *board){
     printf("\nsw() have been called");
@@ -351,6 +354,229 @@ void sd(struct Board *board){
 }
 void p(struct Board *board){
     printf("\np() have been called");
+
+    board->c[0] = &board->cards[0];
+    board->c[1] = &board->cards[1];
+    board->c[2] = &board->cards[2];
+    board->c[3] = &board->cards[3];
+    board->c[4] = &board->cards[4];
+    board->c[5] = &board->cards[5];
+    board->c[6] = &board->cards[6];
+
+    board->f[0] = NULL;
+    board->f[1] = NULL;
+    board->f[2] = NULL;
+    board->f[3] = NULL;
+
+    board->cards[0].num = cardCharToNum(board->deck[0].num);
+    board->cards[0].suit = board->deck[0].suit;
+    board->cards[0].hidden = false;
+    board->cards[0].nextCard = NULL;
+    board->cards[0].prevCard = NULL;
+
+    int i = 0;
+    while (i < 6) {
+        board->cards[(i * 6) + 1].num = cardCharToNum(board->deck[(i * 6) + 1].num);
+        board->cards[(i * 6) + 1].suit = board->deck[(i * 6) + 1].suit;
+        if (i == 0) {
+            board->cards[(i * 6) + 1].hidden = true;
+            board->cards[(i * 6) + 1].prevCard = NULL;
+            board->cards[(i * 6) + 1].nextCard = &board->cards[((i + 1) * 6) + 1];
+        } else if (i == 5) {
+            board->cards[(i * 6) + 1].hidden = false;
+            board->cards[(i * 6) + 1].prevCard = &board->cards[((i - 1) * 6) + 1];
+            board->cards[(i * 6) + 1].nextCard = NULL;
+        } else {
+            board->cards[(i * 6) + 1].hidden = false;
+            board->cards[(i * 6) + 1].prevCard = &board->cards[((i - 1) * 6) + 1];
+            board->cards[(i * 6) + 1].nextCard = &board->cards[((i + 1) * 6) + 1];
+        }
+        i++;
+    }
+    i = 0;
+    while (i < 7) {
+        int j = 2;
+        int k = j;
+        int l = j;
+        if(i == 6){
+            j = 1;
+        }else if (i == 5){
+            k = 1;
+        }
+        board->cards[(i * 6) + j].num = cardCharToNum(board->deck[(i * 6) + j].num);
+        board->cards[(i * 6) + j].suit = board->deck[(i * 6) + j].suit;
+        if (i == 0) {
+            board->cards[(i * 6) + j].prevCard = NULL;
+            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + 2];
+        } else if (i == 6) {
+            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + 2];
+            board->cards[(i * 6) + j].nextCard = NULL;
+        } else {
+            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + l];
+            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + k];
+        }
+        if(i<2){
+            board->cards[(i * 6) + j].hidden = true;
+        }else{
+            board->cards[(i * 6) + j].hidden = false;
+        }
+        i++;
+    }
+    i = 0;
+    while (i < 8) {
+        int j = 3;
+        int k = j;
+        int l = j;
+        if(i == 7){
+            j = 0;
+        }else if(i == 6){
+            k = 0;
+            j = 2;
+        }else if(i == 5){
+            k = 2;
+        }
+        board->cards[(i * 6) + j].num = cardCharToNum(board->deck[(i * 6) + j].num);
+        board->cards[(i * 6) + j].suit = board->deck[(i * 6) + j].suit;
+        if (i == 0) {
+            board->cards[(i * 6) + j].prevCard = NULL;
+            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + 3];
+        } else if (i == 7) {
+            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + 2];
+            board->cards[(i * 6) + j].nextCard = NULL;
+        } else {
+            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + l];
+            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + k];
+        }
+        if(i<3){
+            board->cards[(i * 6) + j].hidden = true;
+        }else{
+            board->cards[(i * 6) + j].hidden = false;
+        }
+        i++;
+    }
+    i = 0;
+    while (i < 9) {
+        int j = 4;
+        int k = j;
+        int l = j;
+        if(i == 8){
+            j = -2;
+        }else if(i == 7){
+            j = 1;
+            k = -2;
+            l = 3;
+        }else if(i == 6){
+            k = 1;
+            j = 3;
+        }else if (i == 5){
+            k = 3;
+        }
+        board->cards[(i * 6) + j].num = cardCharToNum(board->deck[(i * 6) + j].num);
+        board->cards[(i * 6) + j].suit = board->deck[(i * 6) + j].suit;
+        if (i == 0) {
+            board->cards[(i * 6) + j].prevCard = NULL;
+            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + 4];
+        } else if (i == 8) {
+            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + 1];
+            board->cards[(i * 6) + j].nextCard = NULL;
+        } else {
+            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + l];
+            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + k];
+        }
+        if(i<4){
+            board->cards[(i * 6) + j].hidden = true;
+        }else{
+            board->cards[(i * 6) + j].hidden = false;
+        }
+        i++;
+    }
+    i = 0;
+    while (i < 10) {
+        int j = 5;
+        int k = j;
+        int l = j;
+        if(i == 9){
+            j = -5;
+        }else if(i == 8){
+            j = -1;
+            k = -5;
+            l = 2;
+        }else if(i == 7){
+            j = 2;
+            k = -1;
+            l = 4;
+        }else if(i == 6){
+            j = 4;
+            k = 2;
+        }else if(i == 5){
+            k = 4;
+        }
+        board->cards[(i * 6) + j].num = cardCharToNum(board->deck[(i * 6) + j].num);
+        board->cards[(i * 6) + j].suit = board->deck[(i * 6) + j].suit;
+        if (i == 0) {
+            board->cards[(i * 6) + j].prevCard = NULL;
+            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + 5];
+        } else if (i == 9) {
+            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) - 1];
+            board->cards[(i * 6) + j].nextCard = NULL;
+        } else {
+            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + l];
+            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + k];
+        }
+        if(i<5){
+            board->cards[(i * 6) + j].hidden = true;
+        }else{
+            board->cards[(i * 6) + j].hidden = false;
+        }
+        i++;
+    }
+    i = 0;
+    while (i < 11) {
+        int j = 6;
+        int k = j;
+        int l = j;
+        if(i == 10){
+            j = -9;
+        }else if(i == 9){
+            j = -4;
+            k = -9;
+            l = 0;
+        }else if(i == 8){
+            j = 0;
+            k = -4;
+            l = 3;
+        }else if(i == 7){
+            j = 3;
+            k = 0;
+            l = 5;
+        }else if(i == 6){
+            j = 5;
+            k = 3;
+        }else if(i == 5){
+            k = 5;
+        }
+        board->cards[(i * 6) + j].num = cardCharToNum(board->deck[(i * 6) + j].num);
+        board->cards[(i * 6) + j].suit = board->deck[(i * 6) + j].suit;
+        if (i == 0) {
+            board->cards[(i * 6) + j].prevCard = NULL;
+            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + j];
+        } else if (i == 10) {
+            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + j];
+            board->cards[(i * 6) + j].nextCard = NULL;
+        } else {
+            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + l];
+            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + k];
+        }
+        if(i<6){
+            board->cards[(i * 6) + j].hidden = true;
+        }else{
+            board->cards[(i * 6) + j].hidden = false;
+        }
+        i++;
+    }
+
+    board->playPhase = true;
+
 }
 void q(struct Board *board){
     printf("\nq() have been called");
@@ -370,9 +596,9 @@ void s(struct Board *board){
 void l(struct Board *board){
     printf("\nl() have been called with the argument:%s", board->aguement);
 }
-void printBord(struct Board board){
+void printBord(struct Board *board){
     printf("\n");
-    if(board.playPhase){
+    if(board->playPhase){
         printf("C1   C2   C3   C4   C5   C6   C7\n\n");
         int i = 0;
         bool done = false;
@@ -380,8 +606,8 @@ void printBord(struct Board board){
             done = true;
             int j = 0;
             while(j<7){
-                char* card = cardAt(board.c[j], i);
-                printf("%s    ", card);
+                char* card = cardAt(board->c[j], i);
+                printf("%s   ", card);
                 if(*card != ' '){
                     done = false;
                 }
@@ -390,21 +616,21 @@ void printBord(struct Board board){
             printf("      ");
 
             if(i == 0){
-                printf("%s F1", cardAtTop(board.f[0]));
+                printf("%s F1", cardAtTop(board->f[0]));
             }else if(i == 2){
-                printf("%s F2", cardAtTop(board.f[1]));
+                printf("%s F2", cardAtTop(board->f[1]));
             }else if(i == 4){
-                printf("%s F3", cardAtTop(board.f[2]));
+                printf("%s F3", cardAtTop(board->f[2]));
             }else if(i == 6){
-                printf("%s F4", cardAtTop(board.f[3]));
+                printf("%s F4", cardAtTop(board->f[3]));
             }
 
             printf("\n");
 
             i++;
         }
-        printf("LAST Command:%s\n", board.input);
-        printf("Message:%s\n", board.output);
+        printf("LAST Command:%s\n", board->input);
+        printf("Message:%s\n", board->output);
         printf("INPUT>");
     }else{
         printf("C1    C2    C3    C4    C5    C6    C7\n\n");
@@ -412,9 +638,9 @@ void printBord(struct Board board){
         while(i<8){
             int j = 0;
             while(j<7){
-                if(j+(7*i)<52 && board.deck[j+(7*i)].created && !board.deck[j+(7*i)].hidden){
-                    printf("%c%c    ", board.deck[j+(7*i)].num,board.deck[j+(7*i)].suit);
-                }else if(j+(7*i)<52 && board.deck[j+(7*i)].created && board.deck[j+(7*i)].hidden){
+                if(j+(7*i)<52 && board->deck[j+(7*i)].created && !board->deck[j+(7*i)].hidden){
+                    printf("%c%c    ", board->deck[j+(7*i)].num,board->deck[j+(7*i)].suit);
+                }else if(j+(7*i)<52 && board->deck[j+(7*i)].created && board->deck[j+(7*i)].hidden){
                     printf("[]    ");
                 }else{
                     printf("      ");
@@ -435,8 +661,8 @@ void printBord(struct Board board){
             printf("\n");
             i++;
         }
-        printf("LAST Command:%s\n", board.input);
-        printf("Message:%s\n", board.output);
+        printf("LAST Command:%s\n", board->input);
+        printf("Message:%s\n", board->output);
         printf("INPUT>");
     }
 
@@ -459,7 +685,7 @@ void printBord(struct Board board){
 char* cardAt(struct Card* card, int at) {
     // Error handling
     if (card == NULL) {
-        printf("Error: Card pointer must not be null. Received: %p\n", card);
+        //printf("Error: Card pointer must not be null. Received: %p\n", card);
         return "  ";
     } else if (at < 0) {
         printf("Error: Card position argument can not be negative. Received: %d\n", at);
@@ -499,8 +725,8 @@ char* cardAt(struct Card* card, int at) {
 char* cardAtTop(struct Card* card){
     // Error handling
     if (card == NULL) {
-        printf("Error: Card pointer must not be null. Received: %p\n", card);
-        return "  ";
+        //printf("Error: Card pointer must not be null. Received: %p\n", card);
+        return "[]";
     }
 
     if (card->nextCard == NULL) { // Base case
@@ -540,7 +766,42 @@ char cardNumToChar(int value) {
         case 13:
             return 'K';
         default:
-            return (char)value;
+            return (char)(value+'0');
+    }
+}
+
+int cardCharToNum(char value) {
+
+    switch (value) {
+        case 'A':
+            return 1;
+        case '2':
+            return 2;
+        case '3':
+            return 3;
+        case '4':
+            return 4;
+        case '5':
+            return 5;
+        case '6':
+            return 6;
+        case '7':
+            return 7;
+        case '8':
+            return 8;
+        case '9':
+            return 9;
+        case 'T':
+            return 10;
+        case 'J':
+            return 11;
+        case 'D':
+            return 12;
+        case 'K':
+            return 13;
+        default:
+            printf("Error: Value not valid: %c\n", value);
+            return 0;
     }
 }
 
