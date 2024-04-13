@@ -457,6 +457,12 @@ void p(struct Board *board){
 }
 void q(struct Board *board){
     printf("\nq() have been called");
+    int i = 0;
+    while(i < 52){
+        board->deck[i].hidden = true;
+        i++;
+    }
+    board->playPhase = false;
 }
 void move(struct Board *board){
     printf("\nmove() have been called with the argument:%s", board->aguement);
