@@ -302,12 +302,17 @@ void ld(struct Board *board){
 }
 void sw(struct Board *board){
     printf("\nsw() have been called");
+    bool valid = false;
     int i = 0;
     while(i<52) {
         if(board->deck[i].created) {
             board->deck[i].hidden = false;
+            valid = true;
         }
         i++;
+    }
+    if(!valid){
+        notOK(board);
     }
 }
 void si(struct Board *board){
@@ -321,6 +326,16 @@ void sd(struct Board *board){
 }
 void p(struct Board *board){
     printf("\np() have been called");
+
+    int k = 0;
+
+    while(k < 52){
+        if(board->deck[k].created != true){
+            notOK(board);
+            return;
+        }
+        k++;
+    }
 
     board->c[0] = &board->deck[0];
     board->c[1] = &board->deck[1];
@@ -339,193 +354,45 @@ void p(struct Board *board){
     board->deck[0].nextCard = NULL;
     board->deck[0].prevCard = NULL;
 
-    int i = 0;
-    while (i < 6) {
-        if (i == 0) {
-            board->deck[(i * 6) + 1].hidden = true;
-            board->deck[(i * 6) + 1].prevCard = NULL;
-            board->deck[(i * 6) + 1].nextCard = &board->deck[((i + 1) * 6) + 1];
-        } else if (i == 5) {
-            board->deck[(i * 6) + 1].hidden = false;
-            board->deck[(i * 6) + 1].prevCard = &board->deck[((i - 1) * 6) + 1];
-            board->deck[(i * 6) + 1].nextCard = NULL;
-        } else {
-            board->deck[(i * 6) + 1].hidden = false;
-            board->deck[(i * 6) + 1].prevCard = &board->deck[((i - 1) * 6) + 1];
-            board->deck[(i * 6) + 1].nextCard = &board->deck[((i + 1) * 6) + 1];
+    int i;
+    int pile = 1;
+
+    while(pile < 7){
+        i = 0;
+        while(i < 5+pile){
+            int j = 0;
+            int p = 0;
+            int t = 0;
+            int n = 0;
+            while(j < i-4){
+                j++;
+                p = t;
+                t = n;
+                n = n + j;
+            }
+            int preOffset = ((i-1) * 6) + pile - p;
+            int offset = (i * 6) + pile - t;
+            int nextOffset = ((i+1) * 6) + pile - n;
+
+            if(i > 0 && i < 4+pile) {
+                board->deck[offset].prevCard = &board->deck[preOffset];
+                board->deck[offset].nextCard = &board->deck[nextOffset];
+            }else if(i == 0) {
+                board->deck[offset].prevCard = NULL;
+                board->deck[offset].nextCard = &board->deck[nextOffset];
+            }else if(i == 4+pile){
+                board->deck[offset].prevCard = &board->deck[preOffset];
+                board->deck[offset].nextCard = NULL;
+            }
+
+            if(i < pile){
+               board->deck[offset].hidden = true;
+            }else{
+                board->deck[offset].hidden = false;
+            }
+            i++;
         }
-        i++;
-    }
-    i = 0;
-    while (i < 7) {
-        int j = 2;
-        int k = j;
-        int l = j;
-        if(i == 6){
-            j = 1;
-        }else if (i == 5){
-            k = 1;
-        }
-        if (i == 0) {
-            board->deck[(i * 6) + j].prevCard = NULL;
-            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + 2];
-        } else if (i == 6) {
-            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + 2];
-            board->deck[(i * 6) + j].nextCard = NULL;
-        } else {
-            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + l];
-            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + k];
-        }
-        if(i<2){
-            board->deck[(i * 6) + j].hidden = true;
-        }else{
-            board->deck[(i * 6) + j].hidden = false;
-        }
-        i++;
-    }
-    i = 0;
-    while (i < 8) {
-        int j = 3;
-        int k = j;
-        int l = j;
-        if(i == 7){
-            j = 0;
-        }else if(i == 6){
-            k = 0;
-            j = 2;
-        }else if(i == 5){
-            k = 2;
-        }
-        if (i == 0) {
-            board->deck[(i * 6) + j].prevCard = NULL;
-            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + 3];
-        } else if (i == 7) {
-            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + 2];
-            board->deck[(i * 6) + j].nextCard = NULL;
-        } else {
-            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + l];
-            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + k];
-        }
-        if(i<3){
-            board->deck[(i * 6) + j].hidden = true;
-        }else{
-            board->deck[(i * 6) + j].hidden = false;
-        }
-        i++;
-    }
-    i = 0;
-    while (i < 9) {
-        int j = 4;
-        int k = j;
-        int l = j;
-        if(i == 8){
-            j = -2;
-        }else if(i == 7){
-            j = 1;
-            k = -2;
-            l = 3;
-        }else if(i == 6){
-            k = 1;
-            j = 3;
-        }else if (i == 5){
-            k = 3;
-        }
-        if (i == 0) {
-            board->deck[(i * 6) + j].prevCard = NULL;
-            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + 4];
-        } else if (i == 8) {
-            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + 1];
-            board->deck[(i * 6) + j].nextCard = NULL;
-        } else {
-            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + l];
-            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + k];
-        }
-        if(i<4){
-            board->deck[(i * 6) + j].hidden = true;
-        }else{
-            board->deck[(i * 6) + j].hidden = false;
-        }
-        i++;
-    }
-    i = 0;
-    while (i < 10) {
-        int j = 5;
-        int k = j;
-        int l = j;
-        if(i == 9){
-            j = -5;
-        }else if(i == 8){
-            j = -1;
-            k = -5;
-            l = 2;
-        }else if(i == 7){
-            j = 2;
-            k = -1;
-            l = 4;
-        }else if(i == 6){
-            j = 4;
-            k = 2;
-        }else if(i == 5){
-            k = 4;
-        }
-        if (i == 0) {
-            board->deck[(i * 6) + j].prevCard = NULL;
-            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + 5];
-        } else if (i == 9) {
-            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) - 1];
-            board->deck[(i * 6) + j].nextCard = NULL;
-        } else {
-            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + l];
-            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + k];
-        }
-        if(i<5){
-            board->deck[(i * 6) + j].hidden = true;
-        }else{
-            board->deck[(i * 6) + j].hidden = false;
-        }
-        i++;
-    }
-    i = 0;
-    while (i < 11) {
-        int j = 6;
-        int k = j;
-        int l = j;
-        if(i == 10){
-            j = -9;
-        }else if(i == 9){
-            j = -4;
-            k = -9;
-            l = 0;
-        }else if(i == 8){
-            j = 0;
-            k = -4;
-            l = 3;
-        }else if(i == 7){
-            j = 3;
-            k = 0;
-            l = 5;
-        }else if(i == 6){
-            j = 5;
-            k = 3;
-        }else if(i == 5){
-            k = 5;
-        }
-        if (i == 0) {
-            board->deck[(i * 6) + j].prevCard = NULL;
-            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + j];
-        } else if (i == 10) {
-            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + j];
-            board->deck[(i * 6) + j].nextCard = NULL;
-        } else {
-            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + l];
-            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + k];
-        }
-        if(i<6){
-            board->deck[(i * 6) + j].hidden = true;
-        }else{
-            board->deck[(i * 6) + j].hidden = false;
-        }
-        i++;
+        pile++;
     }
 
     board->playPhase = true;
