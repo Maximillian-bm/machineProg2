@@ -2,7 +2,7 @@
 Når man er færdig med et punkt, markerer man den som [x].
 1. 1. [ ] LD (filename)
 2. 2. [x] SW
-3. 3. [ ] SI (split)
+3. 3. [X] SI (split)
 4. 4. [ ] SR
 5. 5. [ ] SD (filename)
 6. 6. [x] QQ

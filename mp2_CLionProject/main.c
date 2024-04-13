@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <malloc.h>
+#include <stdlib.h>
 
 struct Card{
     bool hidden;
@@ -320,6 +321,59 @@ void sw(struct Board *board){
 }
 void si(struct Board *board){
     printf("\nsi() have been called with the argument:%s", board->aguement);
+    int i = 0;
+    int split = 26;
+    if(board->aguement[0] == ' '){
+        i = 1;
+    }
+    if(board->aguement[0] == '\0'){
+        split = (rand()%50) + 1;
+    }else if(board->aguement[i+1] != '\0' && board->aguement[i+2] != '\0'){
+        notOK(board);
+        return;
+    }else if(board->aguement[i+1] == '\0'){
+        split = board->aguement[i]-'0';
+    }else{
+        split = (board->aguement[i+1]-'0')+(10*(board->aguement[i]-'0'));
+    }
+    if(split < 1 || split > 51){
+        notOK(board);
+        return;
+    }
+
+    i = 0;
+    struct Card pile1[split];
+    struct Card pile2[52-split];
+    while(i < 52){
+        if(i > 51-split){
+            pile2[i] = board->deck[i];
+        }else{
+            pile1[i-(52-split)] = board->deck[i];
+        }
+        i++;
+    }
+
+    int p1 = 0;
+    int p2 = 0;
+    i = 0;
+    while(i < 52){
+        if(i < split*2 && i < ((52-split)*2)+1){
+            if(i%2 == 0){
+                board->deck[i] = pile1[i/2];
+                p1 = i/2;
+            }else{
+                board->deck[i] = pile2[(i-1)/2];
+                p2 = (i-1)/2;
+            }
+        }else if(split>52-split){
+            p1++;
+            board->deck[i] = pile1[p1];
+        }else{
+            p2++;
+            board->deck[i] = pile2[p2];
+        }
+        i++;
+    }
 }
 void sr(struct Board *board){
     printf("\nsr() have been called");
