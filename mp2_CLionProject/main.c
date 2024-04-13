@@ -8,18 +8,12 @@ struct Card{
     int num;
     struct Card* prevCard;
     struct Card* nextCard;
-};
-
-struct CardInDeck{
-    bool hidden;
     bool created;
-    char suit;
-    char num;
 };
 
 struct Board{
 
-    struct Card cards[52];
+    struct Card deck[52];
 
     char aguement[20];
 
@@ -28,8 +22,6 @@ struct Board{
     char output[20];
 
     bool playPhase;
-
-    struct CardInDeck deck[52];
 
     struct Card* c[7];
 
@@ -298,33 +290,8 @@ void setDeckToDefoult(struct Board* board){
         }else{
             board->deck[i].suit = 'S';
         }
-        if(i%13 == 0){
-            board->deck[i].num = 'A';
-        }else if(i%13 == 1){
-            board->deck[i].num = '2';
-        }else if(i%13 == 2){
-            board->deck[i].num = '3';
-        }else if(i%13 == 3){
-            board->deck[i].num = '4';
-        }else if(i%13 == 4){
-            board->deck[i].num = '5';
-        }else if(i%13 == 5){
-            board->deck[i].num = '6';
-        }else if(i%13 == 6){
-            board->deck[i].num = '7';
-        }else if(i%13 == 7){
-            board->deck[i].num = '8';
-        }else if(i%13 == 8){
-            board->deck[i].num = '9';
-        }else if(i%13 == 9){
-            board->deck[i].num = 'T';
-        }else if(i%13 == 10){
-            board->deck[i].num = 'J';
-        }else if(i%13 == 11){
-            board->deck[i].num = 'D';
-        }else if(i%13 == 12){
-            board->deck[i].num = 'K';
-        }
+        board->deck[i].num = (i%13)+1;
+
         i++;
     }
 }
@@ -355,41 +322,37 @@ void sd(struct Board *board){
 void p(struct Board *board){
     printf("\np() have been called");
 
-    board->c[0] = &board->cards[0];
-    board->c[1] = &board->cards[1];
-    board->c[2] = &board->cards[2];
-    board->c[3] = &board->cards[3];
-    board->c[4] = &board->cards[4];
-    board->c[5] = &board->cards[5];
-    board->c[6] = &board->cards[6];
+    board->c[0] = &board->deck[0];
+    board->c[1] = &board->deck[1];
+    board->c[2] = &board->deck[2];
+    board->c[3] = &board->deck[3];
+    board->c[4] = &board->deck[4];
+    board->c[5] = &board->deck[5];
+    board->c[6] = &board->deck[6];
 
     board->f[0] = NULL;
     board->f[1] = NULL;
     board->f[2] = NULL;
     board->f[3] = NULL;
 
-    board->cards[0].num = cardCharToNum(board->deck[0].num);
-    board->cards[0].suit = board->deck[0].suit;
-    board->cards[0].hidden = false;
-    board->cards[0].nextCard = NULL;
-    board->cards[0].prevCard = NULL;
+    board->deck[0].hidden = false;
+    board->deck[0].nextCard = NULL;
+    board->deck[0].prevCard = NULL;
 
     int i = 0;
     while (i < 6) {
-        board->cards[(i * 6) + 1].num = cardCharToNum(board->deck[(i * 6) + 1].num);
-        board->cards[(i * 6) + 1].suit = board->deck[(i * 6) + 1].suit;
         if (i == 0) {
-            board->cards[(i * 6) + 1].hidden = true;
-            board->cards[(i * 6) + 1].prevCard = NULL;
-            board->cards[(i * 6) + 1].nextCard = &board->cards[((i + 1) * 6) + 1];
+            board->deck[(i * 6) + 1].hidden = true;
+            board->deck[(i * 6) + 1].prevCard = NULL;
+            board->deck[(i * 6) + 1].nextCard = &board->deck[((i + 1) * 6) + 1];
         } else if (i == 5) {
-            board->cards[(i * 6) + 1].hidden = false;
-            board->cards[(i * 6) + 1].prevCard = &board->cards[((i - 1) * 6) + 1];
-            board->cards[(i * 6) + 1].nextCard = NULL;
+            board->deck[(i * 6) + 1].hidden = false;
+            board->deck[(i * 6) + 1].prevCard = &board->deck[((i - 1) * 6) + 1];
+            board->deck[(i * 6) + 1].nextCard = NULL;
         } else {
-            board->cards[(i * 6) + 1].hidden = false;
-            board->cards[(i * 6) + 1].prevCard = &board->cards[((i - 1) * 6) + 1];
-            board->cards[(i * 6) + 1].nextCard = &board->cards[((i + 1) * 6) + 1];
+            board->deck[(i * 6) + 1].hidden = false;
+            board->deck[(i * 6) + 1].prevCard = &board->deck[((i - 1) * 6) + 1];
+            board->deck[(i * 6) + 1].nextCard = &board->deck[((i + 1) * 6) + 1];
         }
         i++;
     }
@@ -403,22 +366,20 @@ void p(struct Board *board){
         }else if (i == 5){
             k = 1;
         }
-        board->cards[(i * 6) + j].num = cardCharToNum(board->deck[(i * 6) + j].num);
-        board->cards[(i * 6) + j].suit = board->deck[(i * 6) + j].suit;
         if (i == 0) {
-            board->cards[(i * 6) + j].prevCard = NULL;
-            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + 2];
+            board->deck[(i * 6) + j].prevCard = NULL;
+            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + 2];
         } else if (i == 6) {
-            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + 2];
-            board->cards[(i * 6) + j].nextCard = NULL;
+            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + 2];
+            board->deck[(i * 6) + j].nextCard = NULL;
         } else {
-            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + l];
-            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + k];
+            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + l];
+            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + k];
         }
         if(i<2){
-            board->cards[(i * 6) + j].hidden = true;
+            board->deck[(i * 6) + j].hidden = true;
         }else{
-            board->cards[(i * 6) + j].hidden = false;
+            board->deck[(i * 6) + j].hidden = false;
         }
         i++;
     }
@@ -435,22 +396,20 @@ void p(struct Board *board){
         }else if(i == 5){
             k = 2;
         }
-        board->cards[(i * 6) + j].num = cardCharToNum(board->deck[(i * 6) + j].num);
-        board->cards[(i * 6) + j].suit = board->deck[(i * 6) + j].suit;
         if (i == 0) {
-            board->cards[(i * 6) + j].prevCard = NULL;
-            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + 3];
+            board->deck[(i * 6) + j].prevCard = NULL;
+            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + 3];
         } else if (i == 7) {
-            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + 2];
-            board->cards[(i * 6) + j].nextCard = NULL;
+            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + 2];
+            board->deck[(i * 6) + j].nextCard = NULL;
         } else {
-            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + l];
-            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + k];
+            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + l];
+            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + k];
         }
         if(i<3){
-            board->cards[(i * 6) + j].hidden = true;
+            board->deck[(i * 6) + j].hidden = true;
         }else{
-            board->cards[(i * 6) + j].hidden = false;
+            board->deck[(i * 6) + j].hidden = false;
         }
         i++;
     }
@@ -471,22 +430,20 @@ void p(struct Board *board){
         }else if (i == 5){
             k = 3;
         }
-        board->cards[(i * 6) + j].num = cardCharToNum(board->deck[(i * 6) + j].num);
-        board->cards[(i * 6) + j].suit = board->deck[(i * 6) + j].suit;
         if (i == 0) {
-            board->cards[(i * 6) + j].prevCard = NULL;
-            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + 4];
+            board->deck[(i * 6) + j].prevCard = NULL;
+            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + 4];
         } else if (i == 8) {
-            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + 1];
-            board->cards[(i * 6) + j].nextCard = NULL;
+            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + 1];
+            board->deck[(i * 6) + j].nextCard = NULL;
         } else {
-            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + l];
-            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + k];
+            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + l];
+            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + k];
         }
         if(i<4){
-            board->cards[(i * 6) + j].hidden = true;
+            board->deck[(i * 6) + j].hidden = true;
         }else{
-            board->cards[(i * 6) + j].hidden = false;
+            board->deck[(i * 6) + j].hidden = false;
         }
         i++;
     }
@@ -511,22 +468,20 @@ void p(struct Board *board){
         }else if(i == 5){
             k = 4;
         }
-        board->cards[(i * 6) + j].num = cardCharToNum(board->deck[(i * 6) + j].num);
-        board->cards[(i * 6) + j].suit = board->deck[(i * 6) + j].suit;
         if (i == 0) {
-            board->cards[(i * 6) + j].prevCard = NULL;
-            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + 5];
+            board->deck[(i * 6) + j].prevCard = NULL;
+            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + 5];
         } else if (i == 9) {
-            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) - 1];
-            board->cards[(i * 6) + j].nextCard = NULL;
+            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) - 1];
+            board->deck[(i * 6) + j].nextCard = NULL;
         } else {
-            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + l];
-            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + k];
+            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + l];
+            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + k];
         }
         if(i<5){
-            board->cards[(i * 6) + j].hidden = true;
+            board->deck[(i * 6) + j].hidden = true;
         }else{
-            board->cards[(i * 6) + j].hidden = false;
+            board->deck[(i * 6) + j].hidden = false;
         }
         i++;
     }
@@ -555,22 +510,20 @@ void p(struct Board *board){
         }else if(i == 5){
             k = 5;
         }
-        board->cards[(i * 6) + j].num = cardCharToNum(board->deck[(i * 6) + j].num);
-        board->cards[(i * 6) + j].suit = board->deck[(i * 6) + j].suit;
         if (i == 0) {
-            board->cards[(i * 6) + j].prevCard = NULL;
-            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + j];
+            board->deck[(i * 6) + j].prevCard = NULL;
+            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + j];
         } else if (i == 10) {
-            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + j];
-            board->cards[(i * 6) + j].nextCard = NULL;
+            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + j];
+            board->deck[(i * 6) + j].nextCard = NULL;
         } else {
-            board->cards[(i * 6) + j].prevCard = &board->cards[((i - 1) * 6) + l];
-            board->cards[(i * 6) + j].nextCard = &board->cards[((i + 1) * 6) + k];
+            board->deck[(i * 6) + j].prevCard = &board->deck[((i - 1) * 6) + l];
+            board->deck[(i * 6) + j].nextCard = &board->deck[((i + 1) * 6) + k];
         }
         if(i<6){
-            board->cards[(i * 6) + j].hidden = true;
+            board->deck[(i * 6) + j].hidden = true;
         }else{
-            board->cards[(i * 6) + j].hidden = false;
+            board->deck[(i * 6) + j].hidden = false;
         }
         i++;
     }
@@ -639,7 +592,7 @@ void printBord(struct Board *board){
             int j = 0;
             while(j<7){
                 if(j+(7*i)<52 && board->deck[j+(7*i)].created && !board->deck[j+(7*i)].hidden){
-                    printf("%c%c    ", board->deck[j+(7*i)].num,board->deck[j+(7*i)].suit);
+                    printf("%c%c    ", cardNumToChar(board->deck[j+(7*i)].num),board->deck[j+(7*i)].suit);
                 }else if(j+(7*i)<52 && board->deck[j+(7*i)].created && board->deck[j+(7*i)].hidden){
                     printf("[]    ");
                 }else{
