@@ -15,11 +15,11 @@ struct Board{
 
     struct Card deck[52];
 
-    char aguement[20];
+    char aguement[21];
 
-    char input[20];
+    char input[21];
 
-    char output[20];
+    char output[21];
 
     bool playPhase;
 
@@ -57,6 +57,7 @@ void notOK(struct Board*);
 
 int main() {
 
+    int c;
     struct Board board;
     int i = 0;
     while(i<52){
@@ -75,7 +76,9 @@ int main() {
     while(!exit) {
         printBord(&board);
 
-        scanf("%20s", board.input);
+        scanf("%20[^\n]", board.input);
+
+        while ((c = getchar()) != '\n' && c != EOF);
 
         int method = findMethod(&board);
 
