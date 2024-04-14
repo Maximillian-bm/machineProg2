@@ -52,6 +52,7 @@ char* cardAt(struct Card*,int);
 char* cardAtTop(struct Card*);
 char cardNumToChar(int);
 int cardCharToNum(char);
+struct Card* cardPointerAt(struct Card*, int);
 
 void ok(struct Board*);
 void notOK(struct Board*);
@@ -377,6 +378,34 @@ void si(struct Board *board){
 }
 void sr(struct Board *board){
     printf("\nsr() have been called");
+
+    struct Card b;
+    struct Card t;
+    b.prevCard = NULL;
+    b.nextCard = &board->deck[51];
+    t.prevCard = &board->deck[51];
+    t.nextCard = NULL;
+    board->deck[51].nextCard = &t;
+    board->deck[51].prevCard = &b;
+
+    int i = 50;
+
+    while(i >= 0){
+        int r = rand()%(-i+52);
+        struct Card* card = cardPointerAt(&b, r);
+        board->deck[i].prevCard = card;
+        board->deck[i].nextCard = card->nextCard;
+        card->nextCard->prevCard = &board->deck[i];
+        card->nextCard = &board->deck[i];
+
+        i--;
+    }
+
+    i = 0;
+    while(i < 52){
+        board->deck[i] = *cardPointerAt(b.nextCard, i);
+        i++;
+    }
 }
 void sd(struct Board *board){
     printf("\nsd() have been called with the argument:%s", board->aguement);
@@ -685,6 +714,14 @@ int cardCharToNum(char value) {
         default:
             printf("Error: Value not valid: %c\n", value);
             return 0;
+    }
+}
+
+struct Card* cardPointerAt(struct Card* card, int i){
+    if(i <= 0){
+        return card;
+    }else{
+        return cardPointerAt(card->nextCard, i-1);
     }
 }
 
