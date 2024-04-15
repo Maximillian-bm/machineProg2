@@ -8,11 +8,15 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/Gusta/Documents/Uni/Maskinkode/Maskinkode Projekt/machineProg2/mp2_CLionProject/main.c" "CMakeFiles/mp2_CLionProject.dir/main.c.obj" "gcc" "CMakeFiles/mp2_CLionProject.dir/main.c.obj.d"
+  "C:/Users/Elias Yan Mortensen/Documents/uni_DTU/2_semester/MachineProg/machineProgAssignment2/machineProg2/mp2_CLionProject/main.c" "CMakeFiles/mp2_CLionProject.dir/main.c.obj" "gcc" "CMakeFiles/mp2_CLionProject.dir/main.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
 set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
+  )
+
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_FORWARD_LINKED_INFO_FILES
   )
 
 # Fortran module output directory.

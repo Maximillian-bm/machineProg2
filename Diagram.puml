@@ -1,0 +1,42 @@
+@startuml
+title System sequence diagram
+actor Player
+participant Startphase
+participant "LD, SW, SI, SR, SD, P" as commands
+database Local
+participant Playphase
+participant Q
+participant Game_Moves
+participant QQ
+
+-> Player: Start of program
+Player --> Startphase: Input STARTUP phase
+Player <- Startphase: Need Input
+Player --> commands: LD
+commands --> Local: Find file
+Startphase <- commands: If file name not given, \n create new deck
+Startphase <- Local: Load game
+Player <- Startphase: Need Input
+Player --> commands: SW
+Startphase <- commands: Flip cards to face up
+Player <- Startphase: Need Input
+Player --> commands: SI
+Startphase <- commands: split shuffle the deck
+Player <- Startphase: Need Input
+Player --> commands: SR
+Startphase <- commands: Shuffles the deck one \n card at the time
+Player <- Startphase: Need Input
+Player --> commands: SD
+commands -> Local: Save the deck \n into a file
+Player <- Startphase: Need Input
+Player --> commands: P
+commands -> Playphase: Go from startphase to playphase
+Player <- Playphase: Need Input
+Player --> Q: Q
+Startphase <- Q: Go back to startphase
+Player <- Playphase: Need Input
+Player --> Game_Moves: <from> -> <to>
+Playphase <- Game_Moves: Move card
+Player --> QQ: Input QQ
+QQ ->: End of program
+@enduml

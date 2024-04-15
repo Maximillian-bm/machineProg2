@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Gusta/Documents/Uni/Maskinkode/Maskinkode Projekt/machineProg2/mp2_CLionProject
+# Install script for directory: C:/Users/Elias Yan Mortensen/Documents/uni_DTU/2_semester/MachineProg/machineProgAssignment2/machineProg2/mp2_CLionProject
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/Program Files/JetBrains/CLion 2023.3.4/bin/mingw/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "C:/Users/Elias Yan Mortensen/AppData/Local/Programs/CLion/bin/mingw/bin/objdump.exe")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Gusta/Documents/Uni/Maskinkode/Maskinkode Projekt/machineProg2/mp2_CLionProject/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Elias Yan Mortensen/Documents/uni_DTU/2_semester/MachineProg/machineProgAssignment2/machineProg2/mp2_CLionProject/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
