@@ -1,26 +1,27 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <time.h>
-#include "game_util.c"
+#include "structs_util.c"
 
-void ld(struct Board*);
-void sw(struct Board*);
-void si(struct Board*);
-void sr(struct Board*);
-void sd(struct Board*);
-void p(struct Board*);
-void q(struct Board*);
-void move(struct Board*);
-void u(struct Board*);
-void r(struct Board*);
-void s(struct Board*);
-void l(struct Board*);
+bool ld(struct Board*);
+bool sw(struct Board*);
+bool si(struct Board*);
+bool sr(struct Board*);
+bool sd(struct Board*);
+bool p(struct Board*);
+bool q(struct Board*);
+bool move(struct Board*);
+bool u(struct Board*);
+bool r(struct Board*);
+bool s(struct Board*);
+bool l(struct Board*);
 
-void ld(struct Board *board){
+bool ld(struct Board *board){
     printf("\nld() have been called with the argument:%s", board->aguement);
-    setDeckToDefoult(board);
+    setDeckToDefoult(board->deck);
+    return true;
 }
-void sw(struct Board *board){
+bool sw(struct Board *board){
     printf("\nsw() have been called");
     bool valid = false;
     int i = 0;
@@ -32,10 +33,11 @@ void sw(struct Board *board){
         i++;
     }
     if(!valid){
-        notOK(board->output);
+        return false;
     }
+    return true;
 }
-void si(struct Board *board){
+bool si(struct Board *board){
     printf("\nsi() have been called with the argument:%s", board->aguement);
     int i = 0;
     int split = 26;
@@ -46,16 +48,14 @@ void si(struct Board *board){
         srand(time(0));
         split = (rand()%50) + 1;
     }else if(board->aguement[i+1] != '\0' && board->aguement[i+2] != '\0'){
-        notOK(board->output);
-        return;
+        return false;
     }else if(board->aguement[i+1] == '\0'){
         split = board->aguement[i]-'0';
     }else{
         split = (board->aguement[i+1]-'0')+(10*(board->aguement[i]-'0'));
     }
     if(split < 1 || split > 51){
-        notOK(board->output);
-        return;
+        return false;
     }
 
     i = 0;
@@ -92,7 +92,7 @@ void si(struct Board *board){
         i++;
     }
 }
-void sr(struct Board *board){
+bool sr(struct Board *board){
     printf("\nsr() have been called");
 
     struct Card b;
@@ -129,19 +129,20 @@ void sr(struct Board *board){
         board->deck[i] = temp[i];
         i++;
     }
+    return true;
 }
-void sd(struct Board *board){
+bool sd(struct Board *board){
     printf("\nsd() have been called with the argument:%s", board->aguement);
+    return false;
 }
-void p(struct Board *board){
+bool p(struct Board *board){
     printf("\np() have been called");
 
     int k = 0;
 
     while(k < 52){
         if(board->deck[k].created != true){
-            notOK(board->output);
-            return;
+            return false;
         }
         k++;
     }
@@ -205,9 +206,9 @@ void p(struct Board *board){
     }
 
     board->playPhase = true;
-
+    return true;
 }
-void q(struct Board *board){
+bool q(struct Board *board){
     printf("\nq() have been called");
     int i = 0;
     while(i < 52){
@@ -215,19 +216,25 @@ void q(struct Board *board){
         i++;
     }
     board->playPhase = false;
+    return true;
 }
-void move(struct Board *board){
+bool move(struct Board *board){
     printf("\nmove() have been called with the argument:%s", board->aguement);
+    return false;
 }
-void u(struct Board *board){
+bool u(struct Board *board){
     printf("\nu() have been called");
+    return false;
 }
-void r(struct Board *board){
+bool r(struct Board *board){
     printf("\nr() have been called");
+    return false;
 }
-void s(struct Board *board){
+bool s(struct Board *board){
     printf("\ns() have been called with the argument:%s", board->aguement);
+    return false;
 }
-void l(struct Board *board){
+bool l(struct Board *board){
     printf("\nl() have been called with the argument:%s", board->aguement);
+    return false;
 }

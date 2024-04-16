@@ -7,6 +7,7 @@ char* cardAtTop(struct Card*);
 char cardNumToChar(int);
 struct Card* cardPointerAt(struct Card*, int);
 void setDeckToDefoult(struct Card*);
+void printBord(struct Board*);
 
 char* cardAt(struct Card* card, int at) {
     // Error handling
@@ -81,7 +82,7 @@ struct Card* cardPointerAt(struct Card* card, int i){
     }
 }
 
-void setDeckToDefoult(struct Card *deck){
+void setDeckToDefoult(struct Card deck[]){
     int i = 0;
     while(i<52){
         deck[i].created = true;
@@ -99,4 +100,76 @@ void setDeckToDefoult(struct Card *deck){
 
         i++;
     }
+}
+
+void printBord(struct Board *board){
+    printf("\n");
+    if(board->playPhase){
+        printf("C1   C2   C3   C4   C5   C6   C7\n\n");
+        int i = 0;
+        bool done = false;
+        while(!done){
+            done = true;
+            int j = 0;
+            while(j<7){
+                char* card = cardAt(board->c[j], i);
+                printf("%s   ", card);
+                if(*card != ' '){
+                    done = false;
+                }
+                j++;
+            }
+            printf("      ");
+
+            if(i == 0){
+                printf("%s F1", cardAtTop(board->f[0]));
+            }else if(i == 2){
+                printf("%s F2", cardAtTop(board->f[1]));
+            }else if(i == 4){
+                printf("%s F3", cardAtTop(board->f[2]));
+            }else if(i == 6){
+                printf("%s F4", cardAtTop(board->f[3]));
+            }
+
+            printf("\n");
+
+            i++;
+        }
+        printf("LAST Command:%s\n", board->input);
+        printf("Message:%s\n", board->output);
+        printf("INPUT>");
+    }else{
+        printf("C1    C2    C3    C4    C5    C6    C7\n\n");
+        int i = 0;
+        while(i<8){
+            int j = 0;
+            while(j<7){
+                if(j+(7*i)<52 && board->deck[j+(7*i)].created && !board->deck[j+(7*i)].hidden){
+                    printf("%c%c    ", cardNumToChar(board->deck[j+(7*i)].num),board->deck[j+(7*i)].suit);
+                }else if(j+(7*i)<52 && board->deck[j+(7*i)].created && board->deck[j+(7*i)].hidden){
+                    printf("[]    ");
+                }else{
+                    printf("      ");
+                }
+                j++;
+            }
+            printf("      ");
+
+            if(i == 0){
+                printf("[] F1");
+            }else if(i == 2){
+                printf("[] F2");
+            }else if(i == 4){
+                printf("[] F3");
+            }else if(i == 6){
+                printf("[] F4");
+            }
+            printf("\n");
+            i++;
+        }
+        printf("LAST Command:%s\n", board->input);
+        printf("Message:%s\n", board->output);
+        printf("INPUT>");
+    }
+
 }

@@ -1,4 +1,5 @@
 #include "commands.c"
+#include "game_util.c"
 
 int main() {
 
@@ -30,48 +31,72 @@ int main() {
         switch (method) {
             case 1:
                 findAgument(&board.input, &board.aguement,1);
-                ld(&board);
+                if(!ld(&board)){
+                    notOK(board.output);
+                }
                 break;
             case 2:
-                sw(&board);
+                if(!sw(&board)){
+                    notOK(board.output);
+                }
                 break;
             case 3:
                 findAgument(&board.input, &board.aguement,3);
-                si(&board);
+                if(!si(&board)){
+                    notOK(board.output);
+                }
                 break;
             case 4:
-                sr(&board);
+                if(!sr(&board)){
+                    notOK(board.output);
+                }
                 break;
             case 5:
                 findAgument(&board.input, &board.aguement,5);
-                sd(&board);
+                if(!sd(&board)){
+                    notOK(board.output);
+                }
                 break;
             case 6:
                 exit = true;
                 break;
             case 7:
-                p(&board);
+                if(!p(&board)){
+                    notOK(board.output);
+                }
                 break;
             case 8:
-                q(&board);
+                if(!q(&board)){
+                    notOK(board.output);
+                }
                 break;
             case 9:
                 findAgument(&board.input, &board.aguement,9);
-                move(&board);
+                if(!move(&board)){
+                    notOK(board.output);
+                }
                 break;
             case 10:
-                u(&board);
+                if(!u(&board)){
+                    notOK(board.output);
+                }
                 break;
             case 11:
-                r(&board);
+                if(!r(&board)){
+                    notOK(board.output);
+                }
                 break;
             case 12:
                 findAgument(&board.input, &board.aguement,12);
-                s(&board);
+                if(!s(&board)){
+                    notOK(board.output);
+                };
                 break;
             case 13:
                 findAgument(&board.input, &board.aguement,13);
-                l(&board);
+                if(!l(&board)){
+                    notOK(board.output);
+                }
                 break;
         }
     }
