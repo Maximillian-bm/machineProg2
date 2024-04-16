@@ -220,7 +220,18 @@ bool q(struct Board *board){
 }
 bool move(struct Board *board){
     printf("\nmove() have been called with the argument:%s", board->aguement);
-    return false;
+    if(board->aguement[0] == 'C' && board->aguement[2] == ':' && board->aguement[5] == '-' && board->aguement[6] == '>'){
+        int c = board->aguement[1]-'0';
+        int num = cardCharToNum(board->aguement[3]);
+        char suit = board->aguement[4];
+        if(c < 1 || c > 7 || num < 1 || num > 13 || (suit != 'A' && suit != 'S' && suit != 'D' && suit != 'C')){return false;}
+        c--;
+    }else if(board->aguement[0] == 'F' && board->aguement[2] == '-' && board->aguement[3] == '>'){
+
+    }else{
+        return false;
+    }
+    return true;
 }
 bool u(struct Board *board){
     printf("\nu() have been called");
