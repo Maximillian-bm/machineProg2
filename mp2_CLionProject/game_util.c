@@ -4,7 +4,6 @@
 void printBord(struct Board*);
 void findAgument(char*, char*, int);
 int findMethod(char*, char*, bool);
-void setDeckToDefoult(struct Board*);
 void ok(char*);
 void notOK(char*);
 
@@ -225,26 +224,6 @@ int findMethod(char *input, char *output, bool playPhase){
     }
     notOK(output);
     return 0;
-}
-
-void setDeckToDefoult(struct Board* board){
-    int i = 0;
-    while(i<52){
-        board->deck[i].created = true;
-        board->deck[i].hidden = true;
-        if(i<13){
-            board->deck[i].suit = 'C';
-        }else if(i<26){
-            board->deck[i].suit = 'D';
-        }else if(i<39){
-            board->deck[i].suit = 'H';
-        }else{
-            board->deck[i].suit = 'S';
-        }
-        board->deck[i].num = (i%13)+1;
-
-        i++;
-    }
 }
 
 void ok(char* str){

@@ -6,6 +6,7 @@ char* cardAt(struct Card*,int);
 char* cardAtTop(struct Card*);
 char cardNumToChar(int);
 struct Card* cardPointerAt(struct Card*, int);
+void setDeckToDefoult(struct Card*);
 
 char* cardAt(struct Card* card, int at) {
     // Error handling
@@ -77,5 +78,25 @@ struct Card* cardPointerAt(struct Card* card, int i){
         return card;
     }else{
         return cardPointerAt(card->nextCard, i-1);
+    }
+}
+
+void setDeckToDefoult(struct Card *deck){
+    int i = 0;
+    while(i<52){
+        deck[i].created = true;
+        deck[i].hidden = true;
+        if(i<13){
+            deck[i].suit = 'C';
+        }else if(i<26){
+            deck[i].suit = 'D';
+        }else if(i<39){
+            deck[i].suit = 'H';
+        }else{
+            deck[i].suit = 'S';
+        }
+        deck[i].num = (i%13)+1;
+
+        i++;
     }
 }
