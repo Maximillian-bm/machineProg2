@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <malloc.h>
 #include <stdlib.h>
+#include <time.h>
 
 struct Card{
     bool hidden;
@@ -328,6 +329,7 @@ void si(struct Board *board){
         i = 1;
     }
     if(board->aguement[0] == '\0'){
+        srand(time(0));
         split = (rand()%50) + 1;
     }else if(board->aguement[i+1] != '\0' && board->aguement[i+2] != '\0'){
         notOK(board);
@@ -391,6 +393,7 @@ void sr(struct Board *board){
     int i = 50;
 
     while(i >= 0){
+        srand(time(0));
         int r = rand()%(-i+52);
         struct Card* card = cardPointerAt(&b, r);
         board->deck[i].prevCard = card;
@@ -401,9 +404,15 @@ void sr(struct Board *board){
         i--;
     }
 
+    struct Card temp[52];
     i = 0;
     while(i < 52){
-        board->deck[i] = *cardPointerAt(b.nextCard, i);
+        temp[i] = *cardPointerAt(b.nextCard, i);
+        i++;
+    }
+    i = 0;
+    while(i < 52){
+        board->deck[i] = temp[i];
         i++;
     }
 }
