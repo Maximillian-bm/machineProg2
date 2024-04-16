@@ -8,6 +8,7 @@ char cardNumToChar(int);
 struct Card* cardPointerAt(struct Card*, int);
 void setDeckToDefoult(struct Card*);
 void printBord(struct Board*);
+bool moveAontopofB(struct Card*, struct Card*);
 
 char* cardAt(struct Card* card, int at) {
     // Error handling
@@ -171,5 +172,19 @@ void printBord(struct Board *board){
         printf("Message:%s\n", board->output);
         printf("INPUT>");
     }
+
+}
+
+bool moveAontopofB(struct Card *a, struct Card *b){
+
+    if(b->nextCard != NULL){
+        return false;
+    }
+
+    a->prevCard->nextCard = NULL;
+    a->prevCard = b;
+    b->nextCard = a;
+
+    return true;
 
 }
