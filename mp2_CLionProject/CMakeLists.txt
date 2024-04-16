@@ -3,4 +3,9 @@ project(mp2_CLionProject C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(mp2_CLionProject main.c)
+add_executable(mp2_CLionProject main.c
+        commands.c
+        structs.c
+        structs_util.c
+        game_util.c
+)
