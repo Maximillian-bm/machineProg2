@@ -2,7 +2,7 @@
 #include "structs_util.c"
 
 void printBord(struct Board*);
-void findAgument(struct Board*, int);
+void findAgument(char*, char*, int);
 int findMethod(struct Board*);
 void setDeckToDefoult(struct Board*);
 void ok(struct Board*);
@@ -80,7 +80,7 @@ void printBord(struct Board *board){
 
 }
 
-void findAgument(struct Board *board, int aguNum){
+void findAgument(char *cmdStr, char *rtnStr, int aguNum){
 // in the "input" find and return the agument.
 // in the case that the agunum is 1, 5, 12 or 13, return the filename in "input"
 // in the case that agunum is 3 return the number in "input"
@@ -88,7 +88,7 @@ void findAgument(struct Board *board, int aguNum){
 // any returns should be a char* to a new char array
     int i = 0;
     while(true){
-        if(board->input[i] == '\0'){
+        if(cmdStr[i] == '\0'){
             break;
         }
         i++;
@@ -98,20 +98,20 @@ void findAgument(struct Board *board, int aguNum){
         int j = 0;
         i--;
         while(j<i){
-            board->aguement[j] = board->input[j+2];
+            rtnStr[j] = cmdStr[j+2];
             j++;
         }
     }else if(aguNum == 12 || aguNum == 13){
         int j = 0;
         while(j<i){
-            board->aguement[j] = board->input[j+2];
+            rtnStr[j] = cmdStr[j+2];
             j++;
         }
     }else if(aguNum == 9){
         int j = 0;
         i++;
         while(j<i){
-            board->aguement[j] = board->input[j];
+            rtnStr[j] = cmdStr[j];
             j++;
         }
     }

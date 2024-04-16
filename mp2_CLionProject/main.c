@@ -29,21 +29,21 @@ int main() {
 
         switch (method) {
             case 1:
-                findAgument(&board,1);
+                findAgument(&board.input, &board.aguement,1);
                 ld(&board);
                 break;
             case 2:
                 sw(&board);
                 break;
             case 3:
-                findAgument(&board,3);
+                findAgument(&board.input, &board.aguement,3);
                 si(&board);
                 break;
             case 4:
                 sr(&board);
                 break;
             case 5:
-                findAgument(&board,5);
+                findAgument(&board.input, &board.aguement,5);
                 sd(&board);
                 break;
             case 6:
@@ -56,7 +56,7 @@ int main() {
                 q(&board);
                 break;
             case 9:
-                findAgument(&board,9);
+                findAgument(&board.input, &board.aguement,9);
                 move(&board);
                 break;
             case 10:
@@ -66,11 +66,11 @@ int main() {
                 r(&board);
                 break;
             case 12:
-                findAgument(&board,12);
+                findAgument(&board.input, &board.aguement,12);
                 s(&board);
                 break;
             case 13:
-                findAgument(&board,13);
+                findAgument(&board.input, &board.aguement,13);
                 l(&board);
                 break;
         }
