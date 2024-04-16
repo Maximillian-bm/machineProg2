@@ -3,10 +3,10 @@
 
 void printBord(struct Board*);
 void findAgument(char*, char*, int);
-int findMethod(struct Board*);
+int findMethod(char*, char*, bool);
 void setDeckToDefoult(struct Board*);
-void ok(struct Board*);
-void notOK(struct Board*);
+void ok(char*);
+void notOK(char*);
 
 void printBord(struct Board *board){
     printf("\n");
@@ -116,113 +116,114 @@ void findAgument(char *cmdStr, char *rtnStr, int aguNum){
         }
     }
 }
-int findMethod(struct Board *board){
+
+int findMethod(char *input, char *output, bool playPhase){
 // return the number assotiated with the command saved in "input"
 // if input is not valid return 0
-    if(board->playPhase){
-        switch(board->input[0]){
+    if(playPhase){
+        switch(input[0]){
             case 'Q':
-                if(board->input[1] == '\0'){
-                    ok(board);
+                if(input[1] == '\0'){
+                    ok(output);
                     return 8;
                 }else{
-                    notOK(board);
+                    notOK(output);
                     return 0;
                 }
             case 'C':
-                ok(board);
+                ok(output);
                 return 9;
             case 'F':
-                ok(board);
+                ok(output);
                 return 9;
             case 'U':
-                if(board->input[1] == '\0'){
-                    ok(board);
+                if(input[1] == '\0'){
+                    ok(output);
                     return 10;
                 }else{
-                    notOK(board);
+                    notOK(output);
                     return 0;
                 }
             case 'R':
-                if(board->input[1] == '\0'){
-                    ok(board);
+                if(input[1] == '\0'){
+                    ok(output);
                     return 11;
                 }else{
-                    notOK(board);
+                    notOK(output);
                     return 0;
                 }
             case 'S':
-                if(board->input[1] != '\0'){
-                    ok(board);
+                if(input[1] != '\0'){
+                    ok(output);
                     return 12;
                 }else{
-                    notOK(board);
+                    notOK(output);
                     return 0;
                 }
             case 'L':
-                if(board->input[1] != '\0'){
-                    ok(board);
+                if(input[1] != '\0'){
+                    ok(output);
                     return 13;
                 }else{
-                    notOK(board);
+                    notOK(output);
                     return 0;
                 }
         }
     }else{
-        switch (board->input[1]) {
+        switch (input[1]) {
             case 'D':
-                if(board->input[0] == 'L'){
-                    ok(board);
+                if(input[0] == 'L'){
+                    ok(output);
                     return 1;
-                }else if(board->input[0] == 'S'){
-                    ok(board);
+                }else if(input[0] == 'S'){
+                    ok(output);
                     return 5;
                 }else{
-                    notOK(board);
+                    notOK(output);
                 }
             case 'W':
-                if(board->input[0] == 'S' && board->input[2] == '\0'){
-                    ok(board);
+                if(input[0] == 'S' && input[2] == '\0'){
+                    ok(output);
                     return 2;
                 }else{
-                    notOK(board);
+                    notOK(output);
                     return 0;
                 }
             case 'I':
-                if(board->input[0] == 'S'){
-                    ok(board);
+                if(input[0] == 'S'){
+                    ok(output);
                     return 3;
                 }else{
-                    notOK(board);
+                    notOK(output);
                     return 0;
                 }
             case 'R':
-                if(board->input[0] == 'S' && board->input[2] == '\0'){
-                    ok(board);
+                if(input[0] == 'S' && input[2] == '\0'){
+                    ok(output);
                     return 4;
                 }else{
-                    notOK(board);
+                    notOK(output);
                     return 0;
                 }
             case 'Q':
-                if(board->input[0] == 'Q' && board->input[2] == '\0'){
-                    ok(board);
+                if(input[0] == 'Q' && input[2] == '\0'){
+                    ok(output);
                     return 6;
                 }else{
-                    notOK(board);
+                    notOK(output);
                     return 0;
                 }
             case '\0':
-                if(board->input[0] == 'P'){
-                    ok(board);
+                if(input[0] == 'P'){
+                    ok(output);
                     return 7;
                 }else{
-                    notOK(board);
+                    notOK(output);
                     return 0;
                 }
         }
     }
-    notOK(board);
+    notOK(output);
     return 0;
 }
 
@@ -246,21 +247,21 @@ void setDeckToDefoult(struct Board* board){
     }
 }
 
-void ok(struct Board *board){
-    board->output[0] = 'O';
-    board->output[1] = 'K';
-    board->output[2] = '\0';
+void ok(char* str){
+    str[0] = 'O';
+    str[1] = 'K';
+    str[2] = '\0';
 }
 
-void notOK(struct Board *board){
-    board->output[0] = 'N';
-    board->output[1] = 'O';
-    board->output[2] = 'T';
-    board->output[3] = ' ';
-    board->output[4] = 'V';
-    board->output[5] = 'A';
-    board->output[6] = 'L';
-    board->output[7] = 'I';
-    board->output[8] = 'D';
-    board->output[9] = '\0';
+void notOK(char* str){
+    str[0] = 'N';
+    str[1] = 'O';
+    str[2] = 'T';
+    str[3] = ' ';
+    str[4] = 'V';
+    str[5] = 'A';
+    str[6] = 'L';
+    str[7] = 'I';
+    str[8] = 'D';
+    str[9] = '\0';
 }

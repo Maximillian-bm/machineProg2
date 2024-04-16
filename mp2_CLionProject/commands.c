@@ -32,7 +32,7 @@ void sw(struct Board *board){
         i++;
     }
     if(!valid){
-        notOK(board);
+        notOK(board->output);
     }
 }
 void si(struct Board *board){
@@ -46,7 +46,7 @@ void si(struct Board *board){
         srand(time(0));
         split = (rand()%50) + 1;
     }else if(board->aguement[i+1] != '\0' && board->aguement[i+2] != '\0'){
-        notOK(board);
+        notOK(board->output);
         return;
     }else if(board->aguement[i+1] == '\0'){
         split = board->aguement[i]-'0';
@@ -54,7 +54,7 @@ void si(struct Board *board){
         split = (board->aguement[i+1]-'0')+(10*(board->aguement[i]-'0'));
     }
     if(split < 1 || split > 51){
-        notOK(board);
+        notOK(board->output);
         return;
     }
 
@@ -140,7 +140,7 @@ void p(struct Board *board){
 
     while(k < 52){
         if(board->deck[k].created != true){
-            notOK(board);
+            notOK(board->output);
             return;
         }
         k++;
