@@ -12,22 +12,14 @@ participant QQ
 -> Player: Start of program
 Player --> Startphase: Input STARTUP phase
 Player <- Startphase: Need Input
-Player --> commands: LD
-commands --> Local: Find file
-Startphase <- commands: If file name not given, \n create new deck
-Startphase <- Local: Load game
+Player --> commands: LD, SD
+commands --> Local: (LD) Find file
+commands -> Local: (SD) Save the deck \n into a file
+Startphase <- commands: (LD) If file name not given, \n create new deck
+Startphase <- Local: (LD) Load game
 Player <- Startphase: Need Input
-Player --> commands: SW
-Startphase <- commands: Flip cards to face up
-Player <- Startphase: Need Input
-Player --> commands: SI
-Startphase <- commands: split shuffle the deck
-Player <- Startphase: Need Input
-Player --> commands: SR
-Startphase <- commands: Shuffles the deck one \n card at the time
-Player <- Startphase: Need Input
-Player --> commands: SD
-commands -> Local: Save the deck \n into a file
+Player --> commands: SW, SI, SR
+Startphase <- commands: Modify deck\n (eg. shuffles cards)
 Player <- Startphase: Need Input
 Player --> commands: P
 commands -> Playphase: Go from startphase to playphase
