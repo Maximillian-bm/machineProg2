@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <time.h>
+#include <stdlib.h>
 #include "structs_util.c"
 
 bool ld(struct Board*);
