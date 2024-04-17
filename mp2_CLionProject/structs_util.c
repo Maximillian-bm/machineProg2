@@ -1,9 +1,8 @@
 #include <stdio.h>
-#include <malloc.h>
 #include "structs.c"
 
-char* cardAt(struct Card*,int);
-char* cardAtTop(struct Card*);
+void cardAt(struct Card*, int, char*);
+void cardAtTop(struct Card*, char*);
 char cardNumToChar(int);
 int cardCharToNum(char);
 struct Card* cardPointerAt(struct Card*, int);
@@ -11,47 +10,48 @@ void setDeckToDefoult(struct Card*);
 void printBord(struct Board*);
 bool moveAontopofB(struct Card*, struct Card*);
 
-char* cardAt(struct Card* card, int at) {
+void cardAt(struct Card* card, int at, char* cardPointer) {
     // Error handling
     if (card == NULL) {
         //printf("Error: Card pointer must not be null. Received: %p\n", card);
-        return "  ";
+        return;
     } else if (at < 0) {
         printf("Error: Card position argument can not be negative. Received: %d\n", at);
-        return "  ";
+        return;
     }
 
     // Recursive call to find card at the given position.
     if (at == 0) { // Base case
         if (card->hidden == true) {
-            return "[]";
+            cardPointer[0] = '[';
+            cardPointer[1] = ']';
         } else {
-            char *combinedString = malloc(2 * sizeof(char) + 1); // Allocate space for two chars and a null terminator in memory;
-            snprintf(combinedString, sizeof(combinedString), "%c%c", cardNumToChar(card->num), card->suit); // Combine the value with the suit.
-            return combinedString;
+            snprintf(cardPointer, sizeof(cardPointer), "%c%c", cardNumToChar(card->num), card->suit); // Combine the value with the suit.
+            return;
         }
     } else { // (at > 0)
         if (card->nextCard == NULL) {
-            return "  ";
+            return;
         } else { // Recursive call
-            return cardAt(card->nextCard, at - 1);
+            cardAt(card->nextCard, at - 1, cardPointer);
+            return;
         }
     }
 }
 
-char* cardAtTop(struct Card* card){
+void cardAtTop(struct Card* card, char* cardPointer){
     // Error handling
     if (card == NULL) {
         //printf("Error: Card pointer must not be null. Received: %p\n", card);
-        return "[]";
+        return;
     }
 
     if (card->nextCard == NULL) { // Base case
-        char *combinedString = malloc(2 * sizeof(char) + 1); // Allocate space for two chars and a null terminator in memory;
-        snprintf(combinedString, sizeof(combinedString), "%c%c", cardNumToChar(card->num), card->suit); // Combine the value with the suit.
-        return combinedString;
+        snprintf(cardPointer, sizeof(cardPointer), "%c%c", cardNumToChar(card->num), card->suit); // Combine the value with the suit.
+        return;
     } else { // Recursive call
-        return cardAtTop(card->nextCard);
+        cardAtTop(card->nextCard, cardPointer);
+        return;
     }
 }
 
@@ -149,7 +149,9 @@ void printBord(struct Board *board){
             done = true;
             int j = 0;
             while(j<7){
-                char* card = cardAt(board->c[j], i);
+                char card[] = "  ";
+                cardAt(board->c[j], i, card);
+
                 printf("%s   ", card);
                 if(*card != ' '){
                     done = false;
@@ -158,14 +160,18 @@ void printBord(struct Board *board){
             }
             printf("      ");
 
+            char cardPointer[] = "[]";
+            if (i < 7 && i % 2 == 0) {
+                cardAtTop(board->f[i / 2], cardPointer);
+            }
             if(i == 0){
-                printf("%s F1", cardAtTop(board->f[0]));
+                printf("%s F1", cardPointer);
             }else if(i == 2){
-                printf("%s F2", cardAtTop(board->f[1]));
+                printf("%s F2", cardPointer);
             }else if(i == 4){
-                printf("%s F3", cardAtTop(board->f[2]));
+                printf("%s F3", cardPointer);
             }else if(i == 6){
-                printf("%s F4", cardAtTop(board->f[3]));
+                printf("%s F4", cardPointer);
             }
 
             printf("\n");
