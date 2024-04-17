@@ -134,7 +134,45 @@ bool sr(struct Board *board){
 }
 bool sd(struct Board *board){
     printf("\nsd() have been called with the argument:%s", board->aguement);
-    return false;
+
+    FILE *filePointer;
+    int i = 0;
+    char suit[52];
+    char num[52];
+
+    while(i<52){
+       suit[i] = board->deck[i].suit;
+       num[i] = cardNumToChar(board->deck[i].num);
+       i++;
+    }
+
+    // fopen opens the file: syntax fopen(fileName, editMode)
+    if(board->aguement[0] == '\0') {
+        filePointer = fopen("mp2_CLionProject/SaveDeck/cards.txt", "w");
+    }else{
+        int s = sizeof(board->aguement);
+        s = s + 30;
+        char str[i];
+        snprintf(str,s,"mp2_CLionProject/SaveDeck/%s.txt",board->aguement);
+        filePointer = fopen(str, "w");
+    }
+    // Check if the file opened successfully
+    if (filePointer == NULL) {
+        printf("Unable to open file.\n");
+        return 1; // Return error code
+    }
+
+    // Write each suit and number to the file
+    for (i = 0; i < 52; i++) {
+        fprintf(filePointer, "%c%c\n", num[i], suit[i]);
+    }
+
+    // Close the file
+    fclose(filePointer);
+
+    printf("\nDeck has been saved successfully.");
+
+    return true;
 }
 bool p(struct Board *board){
     printf("\np() have been called");
