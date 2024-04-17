@@ -10,7 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81fe4dbb-0ae2-477a-b46c-dd8d142481a4" name="Changes" comment="Brugt array allocation i stedet for malloc">
+      <change afterPath="$PROJECT_DIR$/mp2_CLionProject/SavedDecks/cards.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main" beforeDir="false" afterPath="$PROJECT_DIR$/main" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mp2_CLionProject/commands.c" beforeDir="false" afterPath="$PROJECT_DIR$/mp2_CLionProject/commands.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
