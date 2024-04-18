@@ -260,18 +260,112 @@ bool q(struct Board *board){
 }
 bool move(struct Board *board){
     printf("\nmove() have been called with the argument:%s", board->aguement);
-    if(board->aguement[0] == 'C' && board->aguement[2] == ':' && board->aguement[5] == '-' && board->aguement[6] == '>'){
-        int c = board->aguement[1]-'0';
-        int num = cardCharToNum(board->aguement[3]);
-        char suit = board->aguement[4];
-        if(c < 1 || c > 7 || num < 1 || num > 13 || (suit != 'A' && suit != 'S' && suit != 'D' && suit != 'C')){return false;}
-        c--;
-    }else if(board->aguement[0] == 'F' && board->aguement[2] == '-' && board->aguement[3] == '>'){
+    struct Card *from;
+    struct Card *to;
+    bool fromF = false;
+    int pileNr = 0;
+    char dc = '\0';
+    int dn = 0;
+    char suit = '\0';
+    int num = 0;
 
+    if(board->aguement[0] == 'C' && board->aguement[2] == ':' && board->aguement[5] == '-' && board->aguement[6] == '>'){
+        pileNr = board->aguement[1]-'0';
+        pileNr--;
+        num = cardCharToNum(board->aguement[3]);
+        suit = board->aguement[4];
+        dc = board->aguement[7];
+        dn = board->aguement[8]-'0';
+
+        if(num < 1 || num > 13 || (suit != 'H' && suit != 'D' && suit != 'C' && suit != 'S')){
+            return false;
+        }
+
+        int i = 0;
+        while(true){
+            from = cardPointerAt(board->c[pileNr], i);
+            if(from == NULL){
+                return false;
+            }else if(from->num == num && from->suit == suit){
+                break;
+            }
+            i++;
+        }
+
+    }else if(board->aguement[0] == 'F' && board->aguement[2] == '-' && board->aguement[3] == '>'){
+        pileNr = board->aguement[1]-'0';
+        pileNr--;
+        dc = board->aguement[4];
+        dn = board->aguement[5]-'0';
+        fromF = true;
+
+        from = cardPointerAtTop(board->f[pileNr]);
+
+        if(from == NULL){
+            return false;
+        }
     }else{
         return false;
     }
-    return true;
+
+    dn--;
+
+    if(dn == pileNr && ((dc == 'C' && !fromF)||(dc == 'F' && fromF))){
+        return false;
+    }
+
+    if(dc == 'C'){
+        if((board->c[dn] == NULL && from->num != 13) || dn < 0 || dn > 6){
+            return false;
+        }else if(board->c[dn] == NULL){
+            board->c[dn] = from;
+            if(fromF && from->prevCard == NULL){
+                board->f[pileNr] = NULL;
+            }else if(!fromF && from->prevCard == NULL){
+                board->c[pileNr] = NULL;
+            }else{
+                from->prevCard->nextCard = NULL;
+                from->prevCard = NULL;
+            }
+            return true;
+        }else{
+            to = cardPointerAtTop(board->c[dn]);
+            if(from->suit != to->suit && from->num+1 == to->num){
+                if(from->prevCard == NULL && fromF) board->f[pileNr] = NULL;
+                if(from->prevCard == NULL && !fromF) board->c[pileNr] = NULL;
+                return moveAontopofB(from, to);
+            }else{
+                return false;
+            }
+        }
+    }else if(dc == 'F'){
+        if(from->nextCard != NULL) return false;
+        if((board->f[dn] == NULL && from->num != 1)|| dn < 0 || dn > 3){
+            return false;
+        }else if(board->f[dn] == NULL) {
+            board->f[dn] = from;
+            if (fromF && from->prevCard == NULL) {
+                board->f[pileNr] = NULL;
+            } else if (!fromF && from->prevCard == NULL) {
+                board->c[pileNr] = NULL;
+            }else{
+                from->prevCard->nextCard = NULL;
+                from->prevCard = NULL;
+            }
+            return true;
+        }else{
+            to = cardPointerAtTop(board->f[dn]);
+            if(from->suit == to->suit && from->num == to->num+1){
+                if(from->prevCard == NULL && fromF) board->f[pileNr] = NULL;
+                if(from->prevCard == NULL && !fromF) board->c[pileNr] = NULL;
+                return moveAontopofB(from, to);
+            }else{
+                return false;
+            }
+        }
+    }else{
+        return false;
+    }
 }
 bool u(struct Board *board){
     printf("\nu() have been called");

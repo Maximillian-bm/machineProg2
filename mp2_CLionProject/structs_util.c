@@ -6,6 +6,7 @@ void cardAtTop(struct Card*, char*);
 char cardNumToChar(int);
 int cardCharToNum(char);
 struct Card* cardPointerAt(struct Card*, int);
+struct Card* cardPointerAtTop(struct Card*);
 void setDeckToDefoult(struct Card*);
 void printBord(struct Board*);
 bool moveAontopofB(struct Card*, struct Card*);
@@ -101,7 +102,7 @@ int cardCharToNum(char value) {
             return 10;
         case 'J':
             return 11;
-        case 'D':
+        case 'Q':
             return 12;
         case 'K':
             return 13;
@@ -112,10 +113,21 @@ int cardCharToNum(char value) {
 }
 
 struct Card* cardPointerAt(struct Card* card, int i){
-    if(i <= 0){
+    if(i <= 0 || card == NULL){
         return card;
     }else{
         return cardPointerAt(card->nextCard, i-1);
+    }
+}
+
+
+struct Card* cardPointerAtTop(struct Card* card){
+    if(card == NULL){
+        return NULL;
+    }else if(card->nextCard == NULL){
+        return card;
+    }else{
+        return cardPointerAtTop(card->nextCard);
     }
 }
 
@@ -223,7 +235,10 @@ bool moveAontopofB(struct Card *a, struct Card *b){
         return false;
     }
 
-    a->prevCard->nextCard = NULL;
+    if(a->prevCard != NULL) {
+        a->prevCard->nextCard = NULL;
+        a->prevCard->hidden = false;
+    }
     a->prevCard = b;
     b->nextCard = a;
 
