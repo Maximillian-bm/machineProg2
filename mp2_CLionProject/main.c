@@ -17,6 +17,8 @@ int main() {
 
     board.playPhase = false;
 
+    board.log = NULL;
+
     bool exit = false;
 
     while(!exit) {

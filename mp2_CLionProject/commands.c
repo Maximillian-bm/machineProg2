@@ -298,6 +298,8 @@ int q(struct Board *board){
         i++;
     }
     board->playPhase = false;
+    freeAllLogs(board->log);
+    board->log = NULL;
     return 1;
 }
 int move(struct Board *board){
@@ -360,6 +362,20 @@ int move(struct Board *board){
         if((board->c[dn] == NULL && from->num != 13) || dn < 0 || dn > 6){
             return 4;
         }else if(board->c[dn] == NULL){
+            struct Log thisMove;
+            thisMove.moved = from;
+            thisMove.from = from->prevCard;
+            thisMove.to = NULL;
+            if(fromF){
+                thisMove.cfFrom = 'F';
+            }else{
+                thisMove.cfFrom = 'C';
+            }
+            thisMove.pileFrom = pileNr;
+            thisMove.cfTo = dc;
+            thisMove.pileTo = dn;
+            thisMove.hidden = false;
+            saveLog(board, thisMove);
             board->c[dn] = from;
             if(fromF && from->prevCard == NULL){
                 board->f[pileNr] = NULL;
@@ -373,6 +389,23 @@ int move(struct Board *board){
         }else{
             to = cardPointerAtTop(board->c[dn]);
             if(from->suit != to->suit && from->num+1 == to->num){
+                struct Log thisMove;
+                thisMove.moved = from;
+                thisMove.from = from->prevCard;
+                thisMove.to = to;
+                if(fromF){
+                    thisMove.cfFrom = 'F';
+                }else{
+                    thisMove.cfFrom = 'C';
+                }
+                thisMove.pileFrom = pileNr;
+                thisMove.cfTo = dc;
+                thisMove.pileTo = dn;
+                thisMove.hidden = false;
+                if(from->prevCard != NULL){
+                    thisMove.hidden = from->prevCard->hidden;
+                }
+                saveLog(board, thisMove);
                 if(from->prevCard == NULL && fromF) board->f[pileNr] = NULL;
                 if(from->prevCard == NULL && !fromF) board->c[pileNr] = NULL;
                 return moveAontopofB(from, to);
@@ -385,6 +418,20 @@ int move(struct Board *board){
         if((board->f[dn] == NULL && from->num != 1)|| dn < 0 || dn > 3){
             return 4;
         }else if(board->f[dn] == NULL) {
+            struct Log thisMove;
+            thisMove.moved = from;
+            thisMove.from = from->prevCard;
+            thisMove.to = NULL;
+            if(fromF){
+                thisMove.cfFrom = 'F';
+            }else{
+                thisMove.cfFrom = 'C';
+            }
+            thisMove.pileFrom = pileNr;
+            thisMove.cfTo = dc;
+            thisMove.pileTo = dn;
+            thisMove.hidden = false;
+            saveLog(board, thisMove);
             board->f[dn] = from;
             if (fromF && from->prevCard == NULL) {
                 board->f[pileNr] = NULL;
@@ -398,6 +445,23 @@ int move(struct Board *board){
         }else{
             to = cardPointerAtTop(board->f[dn]);
             if(from->suit == to->suit && from->num == to->num+1){
+                struct Log thisMove;
+                thisMove.moved = from;
+                thisMove.from = from->prevCard;
+                thisMove.to = to;
+                if(fromF){
+                    thisMove.cfFrom = 'F';
+                }else{
+                    thisMove.cfFrom = 'C';
+                }
+                thisMove.pileFrom = pileNr;
+                thisMove.cfTo = dc;
+                thisMove.pileTo = dn;
+                thisMove.hidden = false;
+                if(from->prevCard != NULL){
+                    thisMove.hidden = from->prevCard->hidden;
+                }
+                saveLog(board, thisMove);
                 if(from->prevCard == NULL && fromF) board->f[pileNr] = NULL;
                 if(from->prevCard == NULL && !fromF) board->c[pileNr] = NULL;
                 return moveAontopofB(from, to);

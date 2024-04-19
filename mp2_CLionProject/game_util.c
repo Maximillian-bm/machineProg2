@@ -222,7 +222,6 @@ void message(char* str, int i){
             str[13] = 'D';
             str[14] = '\0';
             break;
-            break;
         case 4:
             str[0] = 'N';
             str[1] = 'O';

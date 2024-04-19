@@ -9,6 +9,21 @@ struct Card{
     bool created;
 };
 
+struct Log{
+
+    struct Log* prevLog;
+    struct Log* nextLog;
+
+    struct Card* moved;
+    struct Card* from;
+    struct Card* to;
+    char cfFrom;
+    int pileFrom;
+    char cfTo;
+    int pileTo;
+    bool hidden;
+};
+
 struct Board{
 
     struct Card deck[52];
@@ -24,4 +39,6 @@ struct Board{
     struct Card* c[7];
 
     struct Card* f[4];
+
+    struct Log* log;
 };

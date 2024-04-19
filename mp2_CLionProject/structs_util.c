@@ -10,6 +10,9 @@ struct Card* cardPointerAtTop(struct Card*);
 void setDeckToDefoult(struct Card*);
 void printBord(struct Board*);
 bool moveAontopofB(struct Card*, struct Card*);
+void saveLog(struct Board*, struct Log);
+void freeLogsAbove(struct Log*);
+void freeAllLogs(struct Log*);
 
 void cardAt(struct Card* card, int at, char* cardPointer) {
     // Error handling
@@ -244,4 +247,30 @@ bool moveAontopofB(struct Card *a, struct Card *b){
 
     return true;
 
+}
+
+void saveLog(struct Board* board, struct Log l){
+    freeLogsAbove(board->log);
+    struct Log* log = (struct Log*)malloc(sizeof(struct Log));
+    *log = l;
+    log->nextLog = NULL;
+    log->prevLog = board->log;
+    if(board->log != NULL) board->log->nextLog = log;
+    board->log = log;
+}
+
+void freeLogsAbove(struct Log* log){
+    if(log != NULL){
+        freeLogsAbove(log->nextLog);
+        free(log->nextLog);
+    }
+}
+
+void freeAllLogs(struct Log* log){
+    if(log->prevLog == NULL){
+        freeLogsAbove(log);
+        free(log);
+    }else{
+        freeAllLogs(log->prevLog);
+    }
 }

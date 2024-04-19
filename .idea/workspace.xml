@@ -11,8 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="81fe4dbb-0ae2-477a-b46c-dd8d142481a4" name="Changes" comment="Brugt array allocation i stedet for malloc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mp2_CLionProject/commands.c" beforeDir="false" afterPath="$PROJECT_DIR$/mp2_CLionProject/commands.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mp2_CLionProject/game_util.c" beforeDir="false" afterPath="$PROJECT_DIR$/mp2_CLionProject/game_util.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mp2_CLionProject/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/mp2_CLionProject/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mp2_CLionProject/structs.c" beforeDir="false" afterPath="$PROJECT_DIR$/mp2_CLionProject/structs.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mp2_CLionProject/structs_util.c" beforeDir="false" afterPath="$PROJECT_DIR$/mp2_CLionProject/structs_util.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +105,7 @@
       <updated>1713345041979</updated>
       <workItem from="1713345042688" duration="333000" />
       <workItem from="1713345604920" duration="2264000" />
-      <workItem from="1713556173963" duration="561000" />
+      <workItem from="1713556173963" duration="6276000" />
     </task>
     <task id="LOCAL-00001" summary="Brugt array allocation i stedet for malloc">
       <option name="closed" value="true" />
@@ -139,67 +141,67 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mp2_CLionProject/commands.c</url>
-          <line>321</line>
+          <line>322</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mp2_CLionProject/commands.c</url>
-          <line>328</line>
+          <line>329</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mp2_CLionProject/commands.c</url>
-          <line>348</line>
+          <line>349</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mp2_CLionProject/commands.c</url>
-          <line>354</line>
+          <line>355</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mp2_CLionProject/commands.c</url>
-          <line>370</line>
+          <line>385</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mp2_CLionProject/commands.c</url>
-          <line>378</line>
+          <line>410</line>
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mp2_CLionProject/commands.c</url>
-          <line>376</line>
+          <line>408</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mp2_CLionProject/commands.c</url>
-          <line>359</line>
+          <line>360</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mp2_CLionProject/commands.c</url>
-          <line>345</line>
+          <line>346</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mp2_CLionProject/commands.c</url>
-          <line>384</line>
+          <line>416</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mp2_CLionProject/commands.c</url>
-          <line>382</line>
+          <line>414</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mp2_CLionProject/commands.c</url>
-          <line>401</line>
+          <line>464</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mp2_CLionProject/commands.c</url>
-          <line>407</line>
+          <line>470</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
