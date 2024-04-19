@@ -18,10 +18,53 @@ bool s(struct Board*);
 bool l(struct Board*);
 
 bool ld(struct Board *board){
-    printf("\nld() have been called with the argument:%s", board->aguement);
-    setDeckToDefoult(board->deck);
+    printf("\nld() have been called with the argument:%s ", board->aguement);
+    FILE *filePointer;
+    int i = 0;
+
+    // Define buffer to store card representation
+    char cards[3];
+
+    if (board->aguement[0] == '\0') {
+        setDeckToDefoult(board->deck);
+
+        printf("Default deck has been loaded successfully.\n");
+        return true;
+
+    } else {
+        // Construct filename based on argument
+        char filename[50];
+        snprintf(filename, sizeof(filename), "mp2_CLionProject/SaveDeck/%s.txt", board->aguement);
+        filePointer = fopen(filename, "r");
+    }
+
+    if (filePointer == NULL) {
+        printf("Unable to open file.\n");
+        return false; // Return error code
+    }
+
+    // Read each card from the file
+    while (fgets(cards, sizeof(cards), filePointer) != NULL && i < 52) {
+        // Skip newline characters
+        if (cards[0] == '\n') {
+            continue;
+        }
+
+        // Store the card information in board->deck[i]
+        board->deck[i].created = true;
+        board->deck[i].hidden = true;
+        board->deck[i].num = cardCharToNum(cards[0]);
+        board->deck[i].suit = cards[1];
+        i++;
+    }
+
+    fclose(filePointer);
+
+    printf("Deck loaded from file successfully.\n");
+
     return true;
 }
+
 bool sw(struct Board *board){
     printf("\nsw() have been called");
     bool valid = false;
