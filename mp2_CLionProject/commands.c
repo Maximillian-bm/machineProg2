@@ -4,20 +4,20 @@
 #include <stdlib.h>
 #include "structs_util.c"
 
-bool ld(struct Board*);
-bool sw(struct Board*);
-bool si(struct Board*);
-bool sr(struct Board*);
-bool sd(struct Board*);
-bool p(struct Board*);
-bool q(struct Board*);
-bool move(struct Board*);
-bool u(struct Board*);
-bool r(struct Board*);
-bool s(struct Board*);
-bool l(struct Board*);
+int ld(struct Board*);
+int sw(struct Board*);
+int si(struct Board*);
+int sr(struct Board*);
+int sd(struct Board*);
+int p(struct Board*);
+int q(struct Board*);
+int move(struct Board*);
+int u(struct Board*);
+int r(struct Board*);
+int s(struct Board*);
+int l(struct Board*);
 
-bool ld(struct Board *board){
+int ld(struct Board *board){
     printf("\nld() have been called with the argument:%s ", board->aguement);
     FILE *filePointer;
     int i = 0;
@@ -29,7 +29,7 @@ bool ld(struct Board *board){
         setDeckToDefoult(board->deck);
 
         printf("Default deck has been loaded successfully.\n");
-        return true;
+        return 1;
 
     } else {
         // Construct filename based on argument
@@ -40,7 +40,7 @@ bool ld(struct Board *board){
 
     if (filePointer == NULL) {
         printf("Unable to open file.\n");
-        return false; // Return error code
+        return 2; // Return error code
     }
 
     // Read each card from the file
@@ -62,10 +62,10 @@ bool ld(struct Board *board){
 
     printf("Deck loaded from file successfully.\n");
 
-    return true;
+    return 1;
 }
 
-bool sw(struct Board *board){
+int sw(struct Board *board){
     printf("\nsw() have been called");
     bool valid = false;
     int i = 0;
@@ -77,11 +77,11 @@ bool sw(struct Board *board){
         i++;
     }
     if(!valid){
-        return false;
+        return 3;
     }
-    return true;
+    return 1;
 }
-bool si(struct Board *board){
+int si(struct Board *board){
     printf("\nsi() have been called with the argument:%s", board->aguement);
     int i = 0;
     int split = 26;
@@ -92,14 +92,14 @@ bool si(struct Board *board){
         srand(time(0));
         split = (rand()%50) + 1;
     }else if(board->aguement[i+1] != '\0' && board->aguement[i+2] != '\0'){
-        return false;
+        return 0;
     }else if(board->aguement[i+1] == '\0'){
         split = board->aguement[i]-'0';
     }else{
         split = (board->aguement[i+1]-'0')+(10*(board->aguement[i]-'0'));
     }
     if(split < 1 || split > 51){
-        return false;
+        return 0;
     }
 
     i = 0;
@@ -135,8 +135,9 @@ bool si(struct Board *board){
         }
         i++;
     }
+    return 1;
 }
-bool sr(struct Board *board){
+int sr(struct Board *board){
     printf("\nsr() have been called");
 
     struct Card b;
@@ -173,9 +174,9 @@ bool sr(struct Board *board){
         board->deck[i] = temp[i];
         i++;
     }
-    return true;
+    return 1;
 }
-bool sd(struct Board *board){
+int sd(struct Board *board){
     printf("\nsd() have been called with the argument:%s", board->aguement);
 
     FILE *filePointer;
@@ -201,7 +202,7 @@ bool sd(struct Board *board){
 // Check if the file opened successfully
     if (filePointer == NULL) {
         printf("Unable to open file.\n");
-        return 1; // Return error code
+        return 2; // Return error code
     }
 
 // Write each suit and number to the file
@@ -214,16 +215,16 @@ bool sd(struct Board *board){
 
     printf("\nDeck has been saved successfully.");
 
-    return true;
+    return 1;
 }
-bool p(struct Board *board){
+int p(struct Board *board){
     printf("\np() have been called");
 
     int k = 0;
 
     while(k < 52){
         if(board->deck[k].created != true){
-            return false;
+            return 3;
         }
         k++;
     }
@@ -287,9 +288,9 @@ bool p(struct Board *board){
     }
 
     board->playPhase = true;
-    return true;
+    return 1;
 }
-bool q(struct Board *board){
+int q(struct Board *board){
     printf("\nq() have been called");
     int i = 0;
     while(i < 52){
@@ -297,9 +298,9 @@ bool q(struct Board *board){
         i++;
     }
     board->playPhase = false;
-    return true;
+    return 1;
 }
-bool move(struct Board *board){
+int move(struct Board *board){
     printf("\nmove() have been called with the argument:%s", board->aguement);
     struct Card *from;
     struct Card *to;
@@ -319,14 +320,14 @@ bool move(struct Board *board){
         dn = board->aguement[8]-'0';
 
         if(num < 1 || num > 13 || (suit != 'H' && suit != 'D' && suit != 'C' && suit != 'S')){
-            return false;
+            return 4;
         }
 
         int i = 0;
         while(true){
             from = cardPointerAt(board->c[pileNr], i);
             if(from == NULL){
-                return false;
+                return 4;
             }else if(from->num == num && from->suit == suit){
                 break;
             }
@@ -343,21 +344,21 @@ bool move(struct Board *board){
         from = cardPointerAtTop(board->f[pileNr]);
 
         if(from == NULL){
-            return false;
+            return 4;
         }
     }else{
-        return false;
+        return 4;
     }
 
     dn--;
 
     if(dn == pileNr && ((dc == 'C' && !fromF)||(dc == 'F' && fromF))){
-        return false;
+        return 4;
     }
 
     if(dc == 'C'){
         if((board->c[dn] == NULL && from->num != 13) || dn < 0 || dn > 6){
-            return false;
+            return 4;
         }else if(board->c[dn] == NULL){
             board->c[dn] = from;
             if(fromF && from->prevCard == NULL){
@@ -368,7 +369,7 @@ bool move(struct Board *board){
                 from->prevCard->nextCard = NULL;
                 from->prevCard = NULL;
             }
-            return true;
+            return 1;
         }else{
             to = cardPointerAtTop(board->c[dn]);
             if(from->suit != to->suit && from->num+1 == to->num){
@@ -376,13 +377,13 @@ bool move(struct Board *board){
                 if(from->prevCard == NULL && !fromF) board->c[pileNr] = NULL;
                 return moveAontopofB(from, to);
             }else{
-                return false;
+                return 4;
             }
         }
     }else if(dc == 'F'){
-        if(from->nextCard != NULL) return false;
+        if(from->nextCard != NULL) return 4;
         if((board->f[dn] == NULL && from->num != 1)|| dn < 0 || dn > 3){
-            return false;
+            return 4;
         }else if(board->f[dn] == NULL) {
             board->f[dn] = from;
             if (fromF && from->prevCard == NULL) {
@@ -393,7 +394,7 @@ bool move(struct Board *board){
                 from->prevCard->nextCard = NULL;
                 from->prevCard = NULL;
             }
-            return true;
+            return 1;
         }else{
             to = cardPointerAtTop(board->f[dn]);
             if(from->suit == to->suit && from->num == to->num+1){
@@ -401,26 +402,26 @@ bool move(struct Board *board){
                 if(from->prevCard == NULL && !fromF) board->c[pileNr] = NULL;
                 return moveAontopofB(from, to);
             }else{
-                return false;
+                return 4;
             }
         }
     }else{
-        return false;
+        return 4;
     }
 }
-bool u(struct Board *board){
+int u(struct Board *board){
     printf("\nu() have been called");
-    return false;
+    return -1;
 }
-bool r(struct Board *board){
+int r(struct Board *board){
     printf("\nr() have been called");
-    return false;
+    return -1;
 }
-bool s(struct Board *board){
+int s(struct Board *board){
     printf("\ns() have been called with the argument:%s", board->aguement);
-    return false;
+    return -1;
 }
-bool l(struct Board *board){
+int l(struct Board *board){
     printf("\nl() have been called with the argument:%s", board->aguement);
-    return false;
+    return -1;
 }

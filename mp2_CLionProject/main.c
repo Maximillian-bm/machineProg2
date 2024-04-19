@@ -31,72 +31,51 @@ int main() {
         switch (method) {
             case 1:
                 findAgument(&board.input, &board.aguement,1);
-                if(!ld(&board)){
-                    notOK(board.output);
-                }
+                message(board.output, ld(&board));
                 break;
             case 2:
-                if(!sw(&board)){
-                    notOK(board.output);
-                }
+                message(board.output, sw(&board));
                 break;
             case 3:
                 findAgument(&board.input, &board.aguement,3);
-                if(!si(&board)){
-                    notOK(board.output);
-                }
+                message(board.output, si(&board));
                 break;
             case 4:
-                if(!sr(&board)){
-                    notOK(board.output);
-                }
+                message(board.output, sr(&board));
                 break;
             case 5:
                 findAgument(&board.input, &board.aguement,5);
-                if(!sd(&board)){
-                    notOK(board.output);
-                }
+                message(board.output, sd(&board));
                 break;
             case 6:
                 exit = true;
                 break;
             case 7:
-                if(!p(&board)){
-                    notOK(board.output);
-                }
+                message(board.output, p(&board));
                 break;
             case 8:
-                if(!q(&board)){
-                    notOK(board.output);
-                }
+                message(board.output, q(&board));
                 break;
             case 9:
                 findAgument(&board.input, &board.aguement,9);
-                if(!move(&board)){
-                    notOK(board.output);
-                }
+                message(board.output, move(&board));
                 break;
             case 10:
-                if(!u(&board)){
-                    notOK(board.output);
-                }
+                message(board.output, u(&board));
                 break;
             case 11:
-                if(!r(&board)){
-                    notOK(board.output);
-                }
+                message(board.output, r(&board));
                 break;
             case 12:
                 findAgument(&board.input, &board.aguement,12);
-                if(!s(&board)){
-                    notOK(board.output);
-                };
+                message(board.output, s(&board));
                 break;
             case 13:
                 findAgument(&board.input, &board.aguement,13);
-                if(!l(&board)){
-                    notOK(board.output);
-                }
+                message(board.output, l(&board));
+                break;
+            default:
+                message(&board.input, method);
                 break;
         }
     }

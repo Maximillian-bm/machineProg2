@@ -3,6 +3,7 @@ void findAgument(char*, char*, int);
 int findMethod(char*, char*, bool);
 void ok(char*);
 void notOK(char*);
+void message(char*, int);
 
 void findAgument(char *cmdStr, char *rtnStr, int aguNum){
 // in the "input" find and return the agument.
@@ -48,48 +49,36 @@ int findMethod(char *input, char *output, bool playPhase){
         switch(input[0]){
             case 'Q':
                 if(input[1] == '\0'){
-                    ok(output);
                     return 8;
                 }else{
-                    notOK(output);
                     return 0;
                 }
             case 'C':
-                ok(output);
                 return 9;
             case 'F':
-                ok(output);
                 return 9;
             case 'U':
                 if(input[1] == '\0'){
-                    ok(output);
                     return 10;
                 }else{
-                    notOK(output);
                     return 0;
                 }
             case 'R':
                 if(input[1] == '\0'){
-                    ok(output);
                     return 11;
                 }else{
-                    notOK(output);
                     return 0;
                 }
             case 'S':
                 if(input[1] != '\0'){
-                    ok(output);
                     return 12;
                 }else{
-                    notOK(output);
                     return 0;
                 }
             case 'L':
                 if(input[1] != '\0'){
-                    ok(output);
                     return 13;
                 }else{
-                    notOK(output);
                     return 0;
                 }
         }
@@ -97,57 +86,44 @@ int findMethod(char *input, char *output, bool playPhase){
         switch (input[1]) {
             case 'D':
                 if(input[0] == 'L'){
-                    ok(output);
                     return 1;
                 }else if(input[0] == 'S'){
-                    ok(output);
                     return 5;
                 }else{
-                    notOK(output);
+                    return 0;
                 }
             case 'W':
                 if(input[0] == 'S' && input[2] == '\0'){
-                    ok(output);
                     return 2;
                 }else{
-                    notOK(output);
                     return 0;
                 }
             case 'I':
                 if(input[0] == 'S'){
-                    ok(output);
                     return 3;
                 }else{
-                    notOK(output);
                     return 0;
                 }
             case 'R':
                 if(input[0] == 'S' && input[2] == '\0'){
-                    ok(output);
                     return 4;
                 }else{
-                    notOK(output);
                     return 0;
                 }
             case 'Q':
                 if(input[0] == 'Q' && input[2] == '\0'){
-                    ok(output);
                     return 6;
                 }else{
-                    notOK(output);
                     return 0;
                 }
             case '\0':
                 if(input[0] == 'P'){
-                    ok(output);
                     return 7;
                 }else{
-                    notOK(output);
                     return 0;
                 }
         }
     }
-    notOK(output);
     return 0;
 }
 
@@ -168,4 +144,103 @@ void notOK(char* str){
     str[7] = 'I';
     str[8] = 'D';
     str[9] = '\0';
+}
+
+void message(char* str, int i){
+    switch (i) {
+        case -1:
+            str[0] = 'N';
+            str[1] = 'O';
+            str[2] = 'T';
+            str[3] = ' ';
+            str[4] = 'I';
+            str[5] = 'M';
+            str[6] = 'P';
+            str[7] = 'L';
+            str[8] = 'E';
+            str[9] = 'M';
+            str[10] = 'E';
+            str[11] = 'N';
+            str[12] = 'T';
+            str[13] = 'E';
+            str[14] = 'D';
+            str[15] = '\0';
+            break;
+        case 0:
+            str[0] = 'N';
+            str[1] = 'O';
+            str[2] = 'T';
+            str[3] = ' ';
+            str[4] = 'V';
+            str[5] = 'A';
+            str[6] = 'L';
+            str[7] = 'I';
+            str[8] = 'D';
+            str[9] = '\0';
+            break;
+        case 1:
+            str[0] = 'O';
+            str[1] = 'K';
+            str[2] = '\0';
+            break;
+        case 2:
+            str[0] = 'U';
+            str[1] = 'N';
+            str[2] = 'A';
+            str[3] = 'B';
+            str[4] = 'L';
+            str[5] = 'E';
+            str[6] = ' ';
+            str[7] = 'T';
+            str[8] = 'O';
+            str[9] = ' ';
+            str[10] = 'F';
+            str[11] = 'I';
+            str[12] = 'N';
+            str[13] = 'D';
+            str[14] = ' ';
+            str[15] = 'F';
+            str[16] = 'I';
+            str[17] = 'L';
+            str[18] = 'E';
+            str[19] = '\0';
+            break;
+        case 3:
+            str[0] = 'N';
+            str[1] = 'O';
+            str[2] = ' ';
+            str[3] = 'D';
+            str[4] = 'E';
+            str[5] = 'C';
+            str[6] = 'K';
+            str[7] = ' ';
+            str[8] = 'L';
+            str[9] = 'O';
+            str[10] = 'A';
+            str[11] = 'D';
+            str[12] = 'E';
+            str[13] = 'D';
+            str[14] = '\0';
+            break;
+            break;
+        case 4:
+            str[0] = 'N';
+            str[1] = 'O';
+            str[2] = 'T';
+            str[3] = ' ';
+            str[4] = 'A';
+            str[5] = ' ';
+            str[6] = 'V';
+            str[7] = 'A';
+            str[8] = 'L';
+            str[9] = 'I';
+            str[10] = 'D';
+            str[11] = ' ';
+            str[12] = 'M';
+            str[13] = 'O';
+            str[14] = 'V';
+            str[15] = 'E';
+            str[16] = '\0';
+            break;
+    }
 }
