@@ -193,11 +193,9 @@ bool sd(struct Board *board){
     if(board->aguement[0] == '\0') {
         filePointer = fopen("mp2_CLionProject/SaveDeck/cards.txt", "w");
     }else{
-        int s = sizeof(board->aguement);
-        s = s + 30;
-        char str[i];
-        snprintf(str,s,"mp2_CLionProject/SaveDeck/%s.txt",board->aguement);
-        filePointer = fopen(str, "w");
+        char filename[50];
+        snprintf(filename, sizeof(filename), "mp2_CLionProject/SaveDeck/%s.txt", board->aguement);
+        filePointer = fopen(filename, "w");
     }
 
 // Check if the file opened successfully
