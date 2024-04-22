@@ -18,7 +18,6 @@ int s(struct Board*);
 int l(struct Board*);
 
 int ld(struct Board *board){
-    printf("\nld() have been called with the argument:%s ", board->aguement);
     FILE *filePointer;
     int i = 0;
 
@@ -27,8 +26,6 @@ int ld(struct Board *board){
 
     if (board->aguement[0] == '\0') {
         setDeckToDefoult(board->deck);
-
-        printf("Default deck has been loaded successfully.\n");
         return 1;
 
     } else {
@@ -39,7 +36,6 @@ int ld(struct Board *board){
     }
 
     if (filePointer == NULL) {
-        printf("Unable to open file.\n");
         return 2; // Return error code
     }
 
@@ -110,13 +106,9 @@ int ld(struct Board *board){
 
     fclose(filePointer);
 
-    printf("Deck loaded from file successfully.\n");
-
     return 1;
 }
-
 int sw(struct Board *board){
-    printf("\nsw() have been called");
     bool valid = false;
     int i = 0;
     while(i<52) {
@@ -132,7 +124,6 @@ int sw(struct Board *board){
     return 1;
 }
 int si(struct Board *board){
-    printf("\nsi() have been called with the argument:%s", board->aguement);
     int i = 0;
     int split = 26;
     if(board->aguement[0] == ' '){
@@ -188,7 +179,6 @@ int si(struct Board *board){
     return 1;
 }
 int sr(struct Board *board){
-    printf("\nsr() have been called");
 
     struct Card b;
     struct Card t;
@@ -227,7 +217,6 @@ int sr(struct Board *board){
     return 1;
 }
 int sd(struct Board *board){
-    printf("\nsd() have been called with the argument:%s", board->aguement);
 
     FILE *filePointer;
     int i = 0;
@@ -251,7 +240,6 @@ int sd(struct Board *board){
 
 // Check if the file opened successfully
     if (filePointer == NULL) {
-        printf("Unable to open file.\n");
         return 2; // Return error code
     }
 
@@ -263,12 +251,9 @@ int sd(struct Board *board){
 // Close the file
     fclose(filePointer);
 
-    printf("\nDeck has been saved successfully.");
-
     return 1;
 }
 int p(struct Board *board){
-    printf("\np() have been called");
 
     int k = 0;
 
@@ -341,7 +326,6 @@ int p(struct Board *board){
     return 1;
 }
 int q(struct Board *board){
-    printf("\nq() have been called");
     int i = 0;
     while(i < 52){
         board->deck[i].hidden = true;
@@ -349,13 +333,11 @@ int q(struct Board *board){
     }
     board->playPhase = false;
     freeAllLogs(board->uLog);
-    freeAllLogs(board->rLog);
     board->uLog = NULL;
     board->rLog = NULL;
     return 1;
 }
 int move(struct Board *board){
-    printf("\nmove() have been called with the argument:%s", board->aguement);
     struct Card *from;
     struct Card *to;
     bool fromF = false;
@@ -526,7 +508,6 @@ int move(struct Board *board){
     }
 }
 int u(struct Board *board){
-    printf("\nu() have been called");
     if(board->uLog == NULL){
         return 5;
     }
@@ -559,7 +540,6 @@ int u(struct Board *board){
     return 1;
 }
 int r(struct Board *board){
-    printf("\nr() have been called");
     if(board->rLog == NULL){
         return 6;
     }
@@ -590,10 +570,8 @@ int r(struct Board *board){
     return 1;
 }
 int s(struct Board *board){
-    printf("\ns() have been called with the argument:%s", board->aguement);
     return -1;
 }
 int l(struct Board *board){
-    printf("\nl() have been called with the argument:%s", board->aguement);
     return -1;
 }
