@@ -1,8 +1,6 @@
 
 void findAgument(char*, char*, int);
 int findMethod(char*, char*, bool);
-void ok(char*);
-void notOK(char*);
 void message(char*, int);
 
 void findAgument(char *cmdStr, char *rtnStr, int aguNum){
@@ -125,25 +123,6 @@ int findMethod(char *input, char *output, bool playPhase){
         }
     }
     return 0;
-}
-
-void ok(char* str){
-    str[0] = 'O';
-    str[1] = 'K';
-    str[2] = '\0';
-}
-
-void notOK(char* str){
-    str[0] = 'N';
-    str[1] = 'O';
-    str[2] = 'T';
-    str[3] = ' ';
-    str[4] = 'V';
-    str[5] = 'A';
-    str[6] = 'L';
-    str[7] = 'I';
-    str[8] = 'D';
-    str[9] = '\0';
 }
 
 void message(char* str, int i){
