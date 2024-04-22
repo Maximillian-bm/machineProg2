@@ -10,8 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81fe4dbb-0ae2-477a-b46c-dd8d142481a4" name="Changes" comment="Brugt array allocation i stedet for malloc">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__11_56__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__11_56__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mp2_CLionProject/commands.c" beforeDir="false" afterPath="$PROJECT_DIR$/mp2_CLionProject/commands.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/main.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +55,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "C/C++ File.main.c (1).executor": "Run",
     "C/C++ File.main.c.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -104,6 +106,7 @@
       <workItem from="1713345604920" duration="2264000" />
       <workItem from="1713556173963" duration="10332000" />
       <workItem from="1713785808080" duration="10332000" />
+      <workItem from="1713802635481" duration="729000" />
     </task>
     <task id="LOCAL-00001" summary="Brugt array allocation i stedet for malloc">
       <option name="closed" value="true" />
