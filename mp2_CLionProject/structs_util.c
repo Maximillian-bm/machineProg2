@@ -275,3 +275,11 @@ void freeAllLogs(struct Log* log){
         freeAllLogs(log->prevLog);
     }
 }
+
+struct Log* firstLog(struct Log* log){
+    if(log == NULL || log->prevLog == NULL){
+        return log;
+    }else{
+        return firstLog(log->prevLog);
+    }
+}

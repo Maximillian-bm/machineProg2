@@ -570,7 +570,110 @@ int r(struct Board *board){
     return 1;
 }
 int s(struct Board *board){
-    return -1;
+
+    FILE *filePointer;
+
+    if(board->aguement[0] == '\0') {
+        filePointer = fopen("mp2_CLionProject/SaveDeck/cards.txt", "w");
+    }else{
+        char filename[50];
+        snprintf(filename, sizeof(filename), "mp2_CLionProject/SaveDeck/%s.txt", board->aguement);
+        filePointer = fopen(filename, "w");
+    }
+
+    if (filePointer == NULL) {
+        return 2;
+    }
+    int i = 0;
+    char suit[52];
+    char num[52];
+    char rl = '\0';
+    char ul = '\0';
+
+    while(i<52){
+        suit[i] = board->deck[i].suit;
+        num[i] = cardNumToChar(board->deck[i].num);
+        i++;
+    }
+    i = 0;
+    while(i<52){
+        fprintf(filePointer, "%c%c\n", num[i], suit[i]);
+        i++;
+    }
+    int j = 0;
+    while(j<7) {
+        fprintf(filePointer, "\n");
+        struct Card *baseCard = board->c[j];
+        struct Card *card = cardPointerAt(baseCard, 1);
+        if (baseCard != NULL) {
+            fprintf(filePointer, "%c%c%u\n", cardNumToChar(baseCard->num), baseCard->suit, baseCard->hidden);
+            i = 2;
+            while (card != NULL) {
+                fprintf(filePointer, "%c%c%u\n", cardNumToChar(card->num), card->suit, card->hidden);
+                card = cardPointerAt(baseCard, i);
+                i++;
+            }
+        }
+        j++;
+    }
+    j = 0;
+    while(j<4) {
+        fprintf(filePointer, "\n");
+        struct Card *baseCard = board->f[j];
+        struct Card *card = cardPointerAt(baseCard, 1);
+        if (baseCard != NULL) {
+            fprintf(filePointer, "%c%c%u\n", cardNumToChar(baseCard->num), baseCard->suit, baseCard->hidden);
+            i = 2;
+            while (card != NULL) {
+                fprintf(filePointer, "%c%c%u\n", cardNumToChar(card->num), card->suit, card->hidden);
+                card = cardPointerAt(baseCard, i);
+                i++;
+            }
+        }
+        j++;
+    }
+    struct Log* log = firstLog(board->uLog);
+    if(log == NULL){
+        log = firstLog(board->rLog);
+    }
+    i = 0;
+    while(true){
+        i++;
+        if(log == NULL){
+            break;
+        }
+        fprintf(filePointer, "\n");
+        if(log == board->uLog){
+            ul = i+'0';
+        }
+        if(log == board->rLog){
+            rl = i+'0';
+        }
+        fprintf(filePointer, "%c%c\n", cardNumToChar(log->moved->num), log->moved->suit);
+        if(log->from == NULL){
+            fprintf(filePointer, "NULL\n");
+        }else{
+            fprintf(filePointer, "%c%c\n", cardNumToChar(log->from->num), log->from->suit);
+        }
+        fprintf(filePointer, "%c%c\n", log->cfFrom, log->pileFrom+'0');
+        if(log->to == NULL){
+            fprintf(filePointer, "NULL\n");
+        }else{
+            fprintf(filePointer, "%c%c\n", cardNumToChar(log->to->num), log->to->suit);
+        }
+        fprintf(filePointer, "%c%c\n", log->cfTo, log->pileTo+'0');
+        if(log->hidden){
+            fprintf(filePointer, "H\n");
+        }else{
+            fprintf(filePointer, "V\n");
+        }
+        log = log->nextLog;
+    }
+    fprintf(filePointer, "\n");
+    fprintf(filePointer, "U%c\n", ul);
+    fprintf(filePointer, "R%c", rl);
+    fclose(filePointer);
+    return 1;
 }
 int l(struct Board *board){
     return -1;
