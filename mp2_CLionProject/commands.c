@@ -560,7 +560,34 @@ int u(struct Board *board){
 }
 int r(struct Board *board){
     printf("\nr() have been called");
-    return -1;
+    if(board->rLog == NULL){
+        return 6;
+    }
+    struct Card* card = board->rLog->moved;
+    if(board->rLog->from == NULL){
+        if(board->rLog->cfFrom == 'C'){
+            board->c[board->rLog->pileFrom] = NULL;
+        }else{
+            board->f[board->rLog->pileFrom] = NULL;
+        }
+    }else{
+        board->rLog->from->hidden = false;
+        board->rLog->from->nextCard = NULL;
+    }
+    if(board->rLog->to == NULL){
+        card->prevCard = NULL;
+        if(board->rLog->cfTo == 'C'){
+            board->c[board->rLog->pileTo] = card;
+        }else{
+            board->f[board->rLog->pileTo] = card;
+        }
+    }else{
+        card->prevCard = board->rLog->to;
+        card->prevCard->nextCard = card;
+    }
+    board->uLog = board->rLog;
+    board->rLog = board->rLog->nextLog;
+    return 1;
 }
 int s(struct Board *board){
     printf("\ns() have been called with the argument:%s", board->aguement);

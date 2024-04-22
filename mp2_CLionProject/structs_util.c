@@ -251,6 +251,7 @@ bool moveAontopofB(struct Card *a, struct Card *b){
 
 void saveLog(struct Board* board, struct Log l){
     freeLogsAbove(board->uLog);
+    board->rLog = NULL;
     struct Log* log = (struct Log*)malloc(sizeof(struct Log));
     *log = l;
     log->nextLog = NULL;
