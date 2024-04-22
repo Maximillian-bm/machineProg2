@@ -147,6 +147,56 @@ void notOK(char* str){
 }
 
 void message(char* str, int i){
+    if(i>=500 && i<600){
+        int line = i - 500;
+        int ones = line%10;
+        int tens = (line-ones)/10;
+        str[0] = 'F';
+        str[1] = 'I';
+        str[2] = 'L';
+        str[3] = 'E';
+        str[4] = ' ';
+        str[5] = 'U';
+        str[6] = 'N';
+        str[7] = 'V';
+        str[8] = 'A';
+        str[9] = 'L';
+        str[10] = 'I';
+        str[11] = 'D';
+        str[12] = ' ';
+        str[13] = 'A';
+        str[14] = 'T';
+        str[15] = ' ';
+        str[16] = tens+'0';
+        str[17] = ones+'0';
+        str[18] = '\0';
+    }else if(i>=600 && i<700){
+        int line = i - 600;
+        int ones = line%10;
+        int tens = (line-ones)/10;
+        str[0] = 'F';
+        str[1] = 'I';
+        str[2] = 'L';
+        str[3] = 'E';
+        str[4] = ' ';
+        str[5] = 'D';
+        str[6] = 'O';
+        str[7] = 'U';
+        str[8] = 'B';
+        str[9] = 'L';
+        str[10] = 'I';
+        str[11] = 'C';
+        str[12] = 'A';
+        str[13] = 'T';
+        str[14] = 'E';
+        str[15] = ' ';
+        str[16] = 'A';
+        str[17] = 'T';
+        str[18] = ' ';
+        str[19] = tens+'0';
+        str[20] = ones+'0';
+        str[21] = '\0';
+    }
     switch (i) {
         case -1:
             str[0] = 'N';

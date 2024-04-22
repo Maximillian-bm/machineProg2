@@ -43,17 +43,67 @@ int ld(struct Board *board){
         return 2; // Return error code
     }
 
+    bool checkDeck[52];
+
+    while(i < 52){
+        checkDeck[i] = false;
+        i++;
+    }
+    i = 0;
+    int j = 0;
+
     // Read each card from the file
     while (fgets(cards, sizeof(cards), filePointer) != NULL && i < 52) {
         // Skip newline characters
         if (cards[0] == '\n') {
             continue;
         }
+        int num = cardCharToNum(cards[0]);
+        int suit;
+        switch(cards[1]){
+            case 'H':
+                suit = -1;
+                break;
+            case 'D':
+                suit = 12;
+                break;
+            case 'C':
+                suit = 25;
+                break;
+            case 'S':
+                suit = 38;
+                break;
+            default:
+                j = 0;
+                while(j<52){
+                    board->deck[j].created = false;
+                   j++;
+                }
+                return 500+i+1;
+        }
+        if(num<1||num>13){
+            j = 0;
+            while(j<52){
+                board->deck[j].created = false;
+                j++;
+            }
+            return 500+i+1;
+        }
+        if(checkDeck[suit+num]){
+            j = 0;
+            while(j<52){
+                board->deck[j].created = false;
+                j++;
+            }
+            return 600+i+1;
+        }else{
+            checkDeck[suit+num] = true;
+        }
 
         // Store the card information in board->deck[i]
         board->deck[i].created = true;
         board->deck[i].hidden = true;
-        board->deck[i].num = cardCharToNum(cards[0]);
+        board->deck[i].num = num;
         board->deck[i].suit = cards[1];
         i++;
     }
