@@ -40,5 +40,7 @@ struct Board{
 
     struct Card* f[4];
 
-    struct Log* log;
+    struct Log* uLog;
+
+    struct Log* rLog;
 };

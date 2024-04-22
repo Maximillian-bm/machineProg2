@@ -348,8 +348,10 @@ int q(struct Board *board){
         i++;
     }
     board->playPhase = false;
-    freeAllLogs(board->log);
-    board->log = NULL;
+    freeAllLogs(board->uLog);
+    freeAllLogs(board->rLog);
+    board->uLog = NULL;
+    board->rLog = NULL;
     return 1;
 }
 int move(struct Board *board){
@@ -525,7 +527,36 @@ int move(struct Board *board){
 }
 int u(struct Board *board){
     printf("\nu() have been called");
-    return -1;
+    if(board->uLog == NULL){
+        return 5;
+    }
+    struct Card* card = board->uLog->moved;
+    if(board->uLog->to == NULL){
+        if(board->uLog->cfTo == 'C'){
+            board->c[board->uLog->pileTo] = NULL;
+        }else{
+            board->f[board->uLog->pileTo] = NULL;
+        }
+    }else{
+        board->uLog->to->nextCard = NULL;
+    }
+    if(board->uLog->from == NULL){
+        card->prevCard = NULL;
+        if(board->uLog->cfFrom == 'C'){
+            board->c[board->uLog->pileFrom] = card;
+        }else{
+            board->f[board->uLog->pileFrom] = card;
+        }
+    }else{
+        if(board->uLog->hidden){
+            board->uLog->from->hidden = true;
+        }
+        card->prevCard = board->uLog->from;
+        card->prevCard->nextCard = card;
+    }
+    board->rLog = board->uLog;
+    board->uLog = board->uLog->prevLog;
+    return 1;
 }
 int r(struct Board *board){
     printf("\nr() have been called");

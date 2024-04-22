@@ -291,5 +291,24 @@ void message(char* str, int i){
             str[15] = 'E';
             str[16] = '\0';
             break;
+        case 5:
+            str[0] = 'N';
+            str[1] = 'O';
+            str[2] = ' ';
+            str[3] = 'M';
+            str[4] = 'O';
+            str[5] = 'V';
+            str[6] = 'E';
+            str[7] = 'S';
+            str[8] = ' ';
+            str[9] = 'T';
+            str[10] = 'O';
+            str[11] = ' ';
+            str[12] = 'U';
+            str[13] = 'N';
+            str[14] = 'D';
+            str[15] = 'O';
+            str[16] = '\0';
+            break;
     }
 }
