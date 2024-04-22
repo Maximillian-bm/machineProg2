@@ -1,15 +1,15 @@
 # Project development steps
 Når man er færdig med et punkt, markerer man den som [x].
-1. 1. [ ] LD (filename)
+1. 1. [x] LD (filename)
 2. 2. [x] SW
 3. 3. [x] SI (split)
 4. 4. [x] SR
-5. 5. [ ] SD (filename)
+5. 5. [x] SD (filename)
 6. 6. [x] QQ
 7. 7. [x] P
 8. 8. [x] Q
-9. 9. [ ] U
-10. 10. [ ] R
+9. 9. [x] U
+10. 10. [x] R
 11. 11. [ ] S
 12. 12. [ ] L
 13. 13. [ ] (Game Moves)
