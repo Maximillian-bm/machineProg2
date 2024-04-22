@@ -12,7 +12,7 @@ Når man er færdig med et punkt, markerer man den som [x].
 10. 10. [x] R
 11. 11. [ ] S
 12. 12. [ ] L
-13. 13. [ ] (Game Moves)
+13. 13. [x] (Game Moves)
 14. 14. [x] Print bord
 15. 15. [x] Find agument
 16. 16. [x] Find command number
