@@ -1,4 +1,3 @@
-
 void findAgument(char*, char*, int);
 int findMethod(char*, char*, bool);
 void message(char*, int);

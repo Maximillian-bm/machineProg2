@@ -1,6 +1,6 @@
 #include "commands.c"
 #include "game_util.c"
-#include "clientConnection.c"
+#include "client.c"
 
 int main() {
 

@@ -8,5 +8,5 @@ add_executable(mp2_CLionProject main.c
         structs.c
         structs_util.c
         game_util.c
-        clientConnection.c
+        client.c
 )
