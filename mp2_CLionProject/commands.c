@@ -409,6 +409,10 @@ int move(struct Board *board){
             thisMove.cfTo = dc;
             thisMove.pileTo = dn;
             thisMove.hidden = false;
+            if(from->prevCard != NULL){
+                thisMove.hidden = from->prevCard->hidden;
+                from->prevCard->hidden = false;
+            }
             saveLog(board, thisMove);
             board->c[dn] = from;
             if(fromF && from->prevCard == NULL){
@@ -465,6 +469,10 @@ int move(struct Board *board){
             thisMove.cfTo = dc;
             thisMove.pileTo = dn;
             thisMove.hidden = false;
+            if(from->prevCard != NULL){
+                thisMove.hidden = from->prevCard->hidden;
+                from->prevCard->hidden = false;
+            }
             saveLog(board, thisMove);
             board->f[dn] = from;
             if (fromF && from->prevCard == NULL) {
