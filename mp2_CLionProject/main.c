@@ -30,7 +30,7 @@ int main() {
 
         while ((c = getchar()) != '\n' && c != EOF);
 
-        int method = findMethod(&board.input, &board.output, board.playPhase);
+        int method = findMethod(&board.input, board.playPhase);
 
         switch (method) {
             case 1:
