@@ -110,6 +110,7 @@ We want to employ efficient memory management techniques to optimize memory usag
 
 ## Design
 (how? - paper solution – flow diagrams/pseudocode – before writing the code)
+![Diagram](http://www.plantuml.com/plantuml/svg/dLFTRfim5BxdAJxrgf5W3u0Yr4biLQIqYkjEkwaqdU93OXNR59jCUVi9qmHejulr2c5_luV3ZG_KXTuqIT2XOSYJ3spW-RLdMp6Kfdr79g4gk0wxXaxS9IrrGLUw9HiW1tvx8C-BuwjjcKB-J24tAUH32bccs5s1F2fd35db4qM1diapjgwYPa4VZ3wAYiNRBHd-TUUEx9SWaIHPyHOr7_F1rMWx5vkC5yYoOfOznyQsVO1y_Fhm-6E7qViDkiuMo7jcDSBdMkTMEMBpCZaVnDlOCCVrjbpXkxOAjMvu1faGibn1qf4H3Wp5rGkUBBGD3ZIIfYX3iCasQc_g288bmx0kOA-FRDD1e-gO0iFoxoZxJcSUSEj8OK_cimEOFli_mzuvfUjJ3F9aSStxB_27lguRzgYeKtxrIU_TOgYNDSfnwr1tpi1FYO93UzcpoMv6-hkRo27UDHFHu9cgbq5rylWVsMcVSwo7hCLGOHrSaLouWz0SDppYm1Rvn7cTXKY4G5Ra-6RL_2UuOQjwq_m1 "Diagram")
 
 ## Implementation
 (how? - actual solution – after writing the code)
