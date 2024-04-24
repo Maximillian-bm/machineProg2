@@ -9,11 +9,21 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81fe4dbb-0ae2-477a-b46c-dd8d142481a4" name="Changes" comment="base kort og class fil">
-      <change afterPath="$PROJECT_DIR$/mp2_CLionProject/client.c" afterDir="false" />
+    <list default="true" id="81fe4dbb-0ae2-477a-b46c-dd8d142481a4" name="Changes" comment="winsock2 and renamed clientConnection to client">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KortspilGUI/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/KortspilGUI/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KortspilGUI/src/main/java/machineprog2/kortspilgui/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/KortspilGUI/src/main/java/machineprog2/kortspilgui/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KortspilGUI/src/main/java/machineprog2/kortspilgui/controller/ServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/KortspilGUI/src/main/java/machineprog2/kortspilgui/controller/ServerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KortspilGUI/src/main/java/machineprog2/kortspilgui/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/KortspilGUI/src/main/java/machineprog2/kortspilgui/model/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KortspilGUI/src/main/java/machineprog2/kortspilgui/model/CardColumn.java" beforeDir="false" afterPath="$PROJECT_DIR$/KortspilGUI/src/main/java/machineprog2/kortspilgui/model/CardColumn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KortspilGUI/src/main/java/machineprog2/kortspilgui/model/CardColumnsWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/KortspilGUI/src/main/java/machineprog2/kortspilgui/model/CardColumnsWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KortspilGUI/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/KortspilGUI/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KortspilGUI/target/classes/machineprog2/kortspilgui/controller/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/KortspilGUI/target/classes/machineprog2/kortspilgui/controller/Controller$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KortspilGUI/target/classes/machineprog2/kortspilgui/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/KortspilGUI/target/classes/machineprog2/kortspilgui/controller/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KortspilGUI/target/classes/machineprog2/kortspilgui/model/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/KortspilGUI/target/classes/machineprog2/kortspilgui/model/Card.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KortspilGUI/target/classes/machineprog2/kortspilgui/model/CardColumn.class" beforeDir="false" afterPath="$PROJECT_DIR$/KortspilGUI/target/classes/machineprog2/kortspilgui/model/CardColumn.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mp2_CLionProject/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/mp2_CLionProject/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mp2_CLionProject/clientConnection.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mp2_CLionProject/client.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mp2_CLionProject/game_util.c" beforeDir="false" afterPath="$PROJECT_DIR$/mp2_CLionProject/game_util.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mp2_CLionProject/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/mp2_CLionProject/main.c" afterDir="false" />
     </list>
@@ -113,7 +123,10 @@
       <workItem from="1713802635481" duration="1104000" />
       <workItem from="1713809177670" duration="47000" />
       <workItem from="1713959724065" duration="2036000" />
-      <workItem from="1713961774730" duration="630000" />
+      <workItem from="1713961774730" duration="1331000" />
+      <workItem from="1713963117353" duration="613000" />
+      <workItem from="1713966801757" duration="756000" />
+      <workItem from="1713968893548" duration="2523000" />
     </task>
     <task id="LOCAL-00001" summary="Brugt array allocation i stedet for malloc">
       <option name="closed" value="true" />
@@ -139,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713961268350</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="winsock2 and renamed clientConnection to client">
+      <option name="closed" value="true" />
+      <created>1713962426378</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713962426378</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,6 +213,7 @@
     <MESSAGE value="Brugt array allocation i stedet for malloc" />
     <MESSAGE value="Tilføjet clientCo" />
     <MESSAGE value="base kort og class fil" />
-    <option name="LAST_COMMIT_MESSAGE" value="base kort og class fil" />
+    <MESSAGE value="winsock2 and renamed clientConnection to client" />
+    <option name="LAST_COMMIT_MESSAGE" value="winsock2 and renamed clientConnection to client" />
   </component>
 </project>

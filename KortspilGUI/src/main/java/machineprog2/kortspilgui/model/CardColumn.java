@@ -41,4 +41,9 @@ public class CardColumn {
     public Card getTopCard() {
         return cards.getLast();
     }
+
+    public void resetColumn() {
+        vBox.getChildren().clear();
+        cards.clear();
+    }
 }

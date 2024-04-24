@@ -6,11 +6,23 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ServerController {
-    public static void main(String[] args) {
+public class ServerController implements Runnable {
+    private final int port;
+    public ServerController(int port) {
+        this.port = port;
+    }
+
+    @Override
+    public void run() {
         try {
+            boolean yo = true;
+            while (yo) {
+                System.out.println("Running in another thread!");
+                Thread.sleep(1000);
+            }
+
             // Create a ServerSocket and bind it to a port
-            ServerSocket serverSocket = new ServerSocket(1312);
+            ServerSocket serverSocket = new ServerSocket(port);
             System.out.println("Server started. Waiting for client...");
 
             // Accept client connection
@@ -45,6 +57,8 @@ public class ServerController {
             serverSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }
