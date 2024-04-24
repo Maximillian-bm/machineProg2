@@ -10,9 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81fe4dbb-0ae2-477a-b46c-dd8d142481a4" name="Changes" comment="Brugt array allocation i stedet for malloc">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__11_56__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__11_56__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mp2_CLionProject/clientConnection.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024,_11_56_[Changes]/main" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024,_11_56_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__11_56__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/main.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mp2_CLionProject/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/mp2_CLionProject/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mp2_CLionProject/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/mp2_CLionProject/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,17 +69,18 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "Dev",
+    "git-widget-placeholder": "Dev__Sockets",
     "last_opened_file_path": "/Users/aggebook/Documents/Uni/Machine code/machineProg2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.editor",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="C/C++ File.main.c (1)">
+  <component name="RunManager" selected="C/C++ File.main.c">
     <configuration name="main.c (1)" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="machineProg2" TARGET_NAME="main.c">
       <option name="sourceFile" value="mp2_CLionProject\main.c" />
       <method v="2">
@@ -106,7 +112,9 @@
       <workItem from="1713345604920" duration="2264000" />
       <workItem from="1713556173963" duration="10332000" />
       <workItem from="1713785808080" duration="10332000" />
-      <workItem from="1713802635481" duration="729000" />
+      <workItem from="1713802635481" duration="1104000" />
+      <workItem from="1713809177670" duration="47000" />
+      <workItem from="1713959724065" duration="1501000" />
     </task>
     <task id="LOCAL-00001" summary="Brugt array allocation i stedet for malloc">
       <option name="closed" value="true" />
