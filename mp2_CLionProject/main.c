@@ -160,13 +160,31 @@ int main() {
     printf("structs_util tests: \n");
     struct Card card = {.num = 7, .suit = 'H', .hidden = false, .nextCard = NULL};
     char cardPointer[3];
-    cardAt(&card, 0, cardPointer);
     char expectedCard[] = "7H";
 
+    cardAt(&card, 0, cardPointer);
     if (strcmp(cardPointer, expectedCard) == 0) {
         printf("CardAt test passed\n");
     } else {
         printf("CardAt test failed\n");
+    }
+
+
+    card.hidden = true;
+    char expectedHiddenCard[] = "[]";
+
+    cardAt(&card, 0, cardPointer);
+    if (strcmp(cardPointer, expectedHiddenCard) == 0) {
+        printf("CardAt test passed\n");
+    } else {
+        printf("CardAt test failed\n");
+    }
+
+    cardAtTop(&card, cardPointer);
+    if (strcmp(cardPointer, expectedCard) == 0) {
+        printf("CardAtTop test passed\n");
+    } else {
+        printf("CardAtTop test failed\n");
     }
 
 
