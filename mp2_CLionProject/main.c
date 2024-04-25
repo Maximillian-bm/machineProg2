@@ -1,3 +1,4 @@
+#include <string.h>
 #include "commands.c"
 #include "game_util.c"
 
@@ -84,6 +85,13 @@ int main() {
         printf("Play phase test failed\n");
     }
 
+    input = "KT";
+    if (findMethod(input, playPhase) == 0) {
+        printf("Startphase wrong input test passed\n");
+    } else {
+        printf("Startphase wrong input test failed\n");
+    }
+
     playPhase = true;
     input = "QQ";
     if (findMethod(input, playPhase) == 6){
@@ -140,6 +148,27 @@ int main() {
     } else {
         printf("Load state test failed\n");
     }
+
+    input = "KT";
+    if (findMethod(input, playPhase) == 0) {
+        printf("Playphase wrong input test passed\n\n");
+    } else {
+        printf("Playphase wrong input test failed\n\n");
+    }
+
+    // Tests for structs_util
+    printf("structs_util tests: \n");
+    struct Card card = {.num = 7, .suit = 'H', .hidden = false, .nextCard = NULL};
+    char cardPointer[3];
+    cardAt(&card, 0, cardPointer);
+    char expectedCard[] = "7H";
+
+    if (strcmp(cardPointer, expectedCard) == 0) {
+        printf("CardAt test passed\n");
+    } else {
+        printf("CardAt test failed\n");
+    }
+
 
     return 1;
 }

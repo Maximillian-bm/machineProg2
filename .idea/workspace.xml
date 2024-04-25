@@ -10,11 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81fe4dbb-0ae2-477a-b46c-dd8d142481a4" name="Changes" comment="Brugt array allocation i stedet for malloc">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_22_2024_6_39_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_22_2024_6_39_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__11_56__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__11_56__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_24-04-2024_13_44__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_24-04-2024_13_44__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17-04-2024_12_00_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17-04-2024_12_00__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_04_2024__11_56__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24-04-2024_10_23__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24-04-2024_10_23__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24-04-2024_13_03__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24-04-2024_13_03__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rapport.md" beforeDir="false" afterPath="$PROJECT_DIR$/Rapport.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/main.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mp2_CLionProject/SaveDeck/cards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/mp2_CLionProject/SaveDeck/cards.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mp2_CLionProject/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/mp2_CLionProject/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,12 +43,12 @@
     &quot;assignee&quot;: &quot;GustavAggeboe&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Maximillian-bm/machineProg2.git&quot;,
-    &quot;accountId&quot;: &quot;b7928aa8-01b9-4014-88d1-af9815bce72a&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Maximillian-bm/machineProg2/",
+    "accountId": "5f339fda-23a2-4666-b106-29d88289ba84"
   }
-}</component>
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -115,6 +119,8 @@
       <workItem from="1713345604920" duration="2264000" />
       <workItem from="1713556173963" duration="10332000" />
       <workItem from="1713785808080" duration="10332000" />
+      <workItem from="1714051907759" duration="82000" />
+      <workItem from="1714061259632" duration="1291000" />
     </task>
     <task id="LOCAL-00001" summary="Brugt array allocation i stedet for malloc">
       <option name="closed" value="true" />
@@ -247,13 +253,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mp2_CLionProject/game_util.c</url>
-          <line>48</line>
-          <option name="timeStamp" value="85" />
+          <line>50</line>
+          <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/mp2_CLionProject/game_util.c</url>
-          <line>50</line>
-          <option name="timeStamp" value="86" />
+          <line>48</line>
+          <option name="timeStamp" value="87" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
