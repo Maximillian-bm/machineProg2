@@ -169,7 +169,6 @@ int main() {
         printf("CardAt test failed\n");
     }
 
-
     card.hidden = true;
     char expectedHiddenCard[] = "[]";
 
@@ -180,12 +179,42 @@ int main() {
         printf("CardAt test failed\n");
     }
 
+    //negative test, should give an error
+    cardAt(&card, -1, cardPointer);
+
     cardAtTop(&card, cardPointer);
     if (strcmp(cardPointer, expectedCard) == 0) {
         printf("CardAtTop test passed\n");
     } else {
         printf("CardAtTop test failed\n");
     }
+
+
+    bool test_passed = true;
+
+    for (int i = 1; i <= 13; i++) {
+        char result = cardNumToChar(i);
+        switch (result) {
+            case 'A':
+            case 'T':
+            case 'J':
+            case 'Q':
+            case 'K':
+                break;
+            default:
+                if (result != (char)(i + '0')) {
+                    test_passed = false;
+                    printf("Test failed for value %d\n", i);
+                }
+        }
+    }
+
+    if (test_passed) {
+        printf("cardNumtoChar test passed\n");
+    } else {
+        printf("cardNumtoChar test failed\n");
+    }
+
 
 
     return 1;
