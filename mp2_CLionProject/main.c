@@ -215,6 +215,40 @@ int main() {
         printf("cardNumtoChar test failed\n");
     }
 
+    for (int i = 1; i <= 13; i++) {
+        int result;
+        switch (i) {
+            case 1:
+                result = cardCharToNum('A');
+                break;
+            case 10:
+                result = cardCharToNum('T');
+                break;
+            case 11:
+                result = cardCharToNum('J');
+                break;
+            case 12:
+                result = cardCharToNum('Q');
+                break;
+            case 13:
+                result = cardCharToNum('K');
+                break;
+            default:
+                result = cardCharToNum(cardNumToChar(i));
+        }
+
+        if (result != i) {
+            test_passed = false;
+            printf("cardCharToNum test failed for value %d\n", i);
+        }
+    }
+
+    if (test_passed) {
+        printf("cardChartoNum test passed\n");
+    } else {
+        printf("cardChartoNum test failed\n");
+    }
+
 
 
     return 1;
