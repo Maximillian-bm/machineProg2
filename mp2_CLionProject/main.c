@@ -249,6 +249,22 @@ int main() {
         printf("cardChartoNum test failed\n");
     }
 
+    struct Card card1 = {.num = 1, .suit = 'C', .hidden = false, .nextCard = NULL};
+    struct Card card2 = {.num = 2, .suit = 'D', .hidden = false, .nextCard = &card1};
+    struct Card card3 = {.num = 3, .suit = 'S', .hidden = false, .nextCard = &card2};
+    struct Card* result1 = cardPointerAt(&card3, 2);
+    struct Card* result2 = cardPointerAt(&card3, -1);
+    struct Card* result3 = cardPointerAt(NULL, 2);
+    if (result1 == &card1) {
+        if (result2 == &card3){
+            if (result3 == NULL) {
+                printf("cardPointerAt test passed\n");
+            }
+        }
+    } else {
+        printf("cardPointerAt test failed\n");
+    }
+
 
 
     return 1;
