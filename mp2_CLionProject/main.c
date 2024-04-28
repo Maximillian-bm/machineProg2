@@ -255,14 +255,19 @@ int main() {
     struct Card* result1 = cardPointerAt(&card3, 2);
     struct Card* result2 = cardPointerAt(&card3, -1);
     struct Card* result3 = cardPointerAt(NULL, 2);
-    if (result1 == &card1) {
-        if (result2 == &card3){
-            if (result3 == NULL) {
-                printf("cardPointerAt test passed\n");
-            }
-        }
+    if (result1 == &card1 && result2 == &card3 && result3 == NULL) {
+        printf("cardPointerAt test passed\n");
     } else {
         printf("cardPointerAt test failed\n");
+    }
+
+    struct Card* result4 = cardPointerAtTop(&card3);
+    struct Card* result5 = cardPointerAtTop(&card1);
+    struct Card* result6 = cardPointerAtTop(NULL);
+    if (result4 == &card1 && result5 == &card1 && result6 == NULL){
+        printf("cardPointerAtTop test passed\n");
+    } else {
+        printf("cardPointerAtTop test failed\n");
     }
 
 

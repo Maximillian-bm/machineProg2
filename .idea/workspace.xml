@@ -9,13 +9,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81fe4dbb-0ae2-477a-b46c-dd8d142481a4" name="Changes" comment="Brugt array allocation i stedet for malloc">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25-04-2024_10_33__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25-04-2024_10_33__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25-04-2024_15_32__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25-04-2024_15_32__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_24-04-2024_13_44__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_24-04-2024_13_44__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24-04-2024_10_23__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24-04-2024_10_23__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24-04-2024_13_03__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24-04-2024_13_03__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="81fe4dbb-0ae2-477a-b46c-dd8d142481a4" name="Changes" comment="cardPointerAt test">
       <change beforePath="$PROJECT_DIR$/main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/main.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mp2_CLionProject/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/mp2_CLionProject/main.c" afterDir="false" />
     </list>
@@ -75,6 +69,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "structure.view.defaults.are.configured": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -153,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714134002620</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="cardPointerAt test">
+      <option name="closed" value="true" />
+      <created>1714296629672</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1714296629672</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,7 +210,8 @@
     <MESSAGE value="some more tests" />
     <MESSAGE value="more tests" />
     <MESSAGE value="cardNumtoChar test" />
-    <option name="LAST_COMMIT_MESSAGE" value="cardNumtoChar test" />
+    <MESSAGE value="cardPointerAt test" />
+    <option name="LAST_COMMIT_MESSAGE" value="cardPointerAt test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
