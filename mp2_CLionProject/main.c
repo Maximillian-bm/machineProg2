@@ -270,6 +270,45 @@ int main() {
         printf("cardPointerAtTop test failed\n");
     }
 
+    struct Card deck[52];
+
+    setDeckToDefoult(deck);
+
+    test_passed = true;
+    for (int i = 0; i < 52; i++) {
+        struct Card card = deck[i];
+        if (!card.created || card.hidden) {
+            test_passed = false;
+            break;
+        }
+        if (i < 13 && card.suit != 'C') {
+            test_passed = false;
+            break;
+        }
+        if (i >= 13 && i < 26 && card.suit != 'D') {
+            test_passed = false;
+            break;
+        }
+        if (i >= 26 && i < 39 && card.suit != 'H') {
+            test_passed = false;
+            break;
+        }
+        if (i >= 39 && card.suit != 'S') {
+            test_passed = false;
+            break;
+        }
+        if (card.num != ((i % 13) + 1)) {
+            test_passed = false;
+            break;
+        }
+    }
+
+    if (test_passed) {
+        printf("setDeckToDefoult test passed\n");
+    } else {
+        printf("setDeckToDefoult test failed\n");
+    }
+
 
 
     return 1;
