@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <malloc.h>
 #include "structs.c"
 
 void cardAt(struct Card*, int, char*);

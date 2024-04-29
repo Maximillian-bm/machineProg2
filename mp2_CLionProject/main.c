@@ -276,7 +276,7 @@ int main() {
 
     test_passed = true;
     for (int i = 0; i < 52; i++) {
-        struct Card card = deck[i];
+        card = deck[i];
         if (!card.created || card.hidden) {
             test_passed = false;
             break;
@@ -308,6 +308,17 @@ int main() {
     } else {
         printf("setDeckToDefoult test failed\n");
     }
+
+    struct Card A = {.num = 10, .suit = 'C', .hidden = false, .prevCard = &card1, .nextCard = NULL};
+    struct Card B = {.num = 11, .suit = 'D', .hidden = false, .prevCard = NULL, .nextCard = NULL};
+    if (moveAontopofB(&A, &B)) {
+        printf("moveAontopofB test passed\n");
+    } else {
+        printf("moveAontopofB test failed\n");
+    }
+
+
+
 
 
 
